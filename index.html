@@ -1,0 +1,955 @@
+<style>
+:root{--o1:#d45c00;--o2:#e87020;--o3:#f5a050;--o4:#fff3ea;--dark:#1a0a00;--text:#1a1a1a;--muted:#666;--border:#f0d8c0}
+.p{font-family:'Georgia',serif;font-size:17px;line-height:1.8;color:var(--text);max-width:900px;margin:0 auto}
+.p *{box-sizing:border-box}
+.p a{color:var(--o1);text-decoration:none}
+.p a:hover{text-decoration:underline}
+
+/* HERO */
+.hero{background:linear-gradient(140deg,#120500 0%,#6b2200 45%,var(--o1) 78%,var(--o2) 100%);padding:72px 48px 56px;border-radius:6px 6px 0 0;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.03'%3E%3Cpath d='M0 0h80v80H0z'/%3E%3Cpath d='M40 0L80 40 40 80 0 40z' fill='none' stroke='%23fff' stroke-opacity='.04' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-tag{font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:18px;position:relative}
+.hero h1{font-family:Arial,sans-serif;font-size:clamp(26px,4.5vw,48px);font-weight:900;color:#fff;line-height:1.1;margin-bottom:14px;position:relative;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.hero h1 span{color:#ffd6a8}
+.hero-sub{font-size:18px;color:#fff4e8;max-width:620px;line-height:1.65;font-style:italic;position:relative;text-shadow:0 1px 4px rgba(0,0,0,.2)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:20px;margin-top:28px;position:relative}
+.hero-meta span{font-family:Arial,sans-serif;font-size:12px;color:rgba(255,255,255,.82);display:flex;align-items:center;gap:5px}
+.hero-meta b{color:#fff;font-weight:700}
+
+/* AMATEUR BANNER */
+.amateur{background:#2a1200;color:#ffd6a8;padding:14px 48px;font-family:Arial,sans-serif;font-size:13px;line-height:1.55;border-bottom:2px solid var(--o1)}
+.amateur b{color:#fff}
+@media(max-width:600px){.amateur{padding:14px 20px}}
+
+/* STATS BAND */
+.sband{background:var(--o1);display:flex;flex-wrap:wrap;justify-content:space-around;padding:16px 32px;gap:8px}
+.sband-i{text-align:center;padding:4px 12px}
+.sband-i .n{font-family:Arial,sans-serif;font-size:24px;font-weight:900;color:#fff;line-height:1.1}
+.sband-i .l{font-family:Arial,sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.7);margin-top:2px}
+.sband-i .e{display:inline-block;background:rgba(255,255,255,.18);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:3px;letter-spacing:.05em}
+
+/* TOC */
+.toc{background:#faf6f2;border:1px solid var(--border);border-radius:6px;padding:24px 28px;margin:32px 0}
+.toc-title{font-family:Arial,sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--o1);margin-bottom:14px}
+.toc ol{margin:0;padding-left:20px;columns:2;column-gap:32px}
+@media(max-width:600px){.toc ol{columns:1}}
+.toc li{font-family:Arial,sans-serif;font-size:13px;color:var(--muted);margin-bottom:5px;break-inside:avoid}
+.toc li a{color:var(--o1);font-weight:600}
+
+/* BODY */
+.body{padding:0 48px}
+@media(max-width:600px){.body{padding:0 20px}}
+
+/* HEADINGS */
+.p h2{font-family:Arial,sans-serif;font-size:23px;font-weight:900;color:var(--text);border-bottom:3px solid var(--o2);display:inline-block;padding-bottom:6px;margin:52px 0 16px;line-height:1.2}
+.p h3{font-family:Arial,sans-serif;font-size:16px;font-weight:800;color:var(--o1);text-transform:uppercase;letter-spacing:.07em;margin:32px 0 10px}
+.p h4{font-family:Arial,sans-serif;font-size:14px;font-weight:700;color:var(--text);margin:20px 0 6px}
+.p p:not(.hero-sub){margin:0 0 16px;color:#2a2a2a}
+
+/* DECLARATION OF INTERESTS */
+.coi{background:#fff;border:2px solid var(--o1);border-radius:8px;padding:22px 26px;margin:28px 0}
+.coi-title{font-family:Arial,sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--o1);margin-bottom:10px}
+.coi p{font-size:15px;color:#333;margin:0 0 10px;line-height:1.65}
+.coi p:last-child{margin-bottom:0}
+
+/* COMPONENTS */
+.lead{font-size:20px;line-height:1.75;color:#333;border-left:5px solid var(--o2);padding:4px 0 4px 20px;margin:32px 0;font-style:italic}
+.pull{background:linear-gradient(135deg,#fff8f3,#fff0e2);border-left:5px solid var(--o2);padding:22px 26px;margin:28px 0;border-radius:0 8px 8px 0}
+.pull p{font-size:16px;font-style:italic;color:#333;margin:0 0 8px;line-height:1.65}
+.pull cite{font-family:Arial,sans-serif;font-size:12px;color:#999;text-transform:uppercase;letter-spacing:.08em}
+.box{background:var(--o4);border:1px solid var(--border);border-radius:8px;padding:20px 24px;margin:24px 0}
+.box-title{font-family:Arial,sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--o1);margin-bottom:8px}
+.box p{font-size:15px;margin:0;color:#444;line-height:1.6}
+.warn{background:#fff8f3;border-top:3px solid var(--o1);border-radius:0 0 8px 8px;padding:18px 22px;margin:24px 0}
+.warn strong{font-family:Arial,sans-serif;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--o1);display:block;margin-bottom:6px}
+.warn p{font-size:14.5px;margin:4px 0;color:#555;line-height:1.6}
+.note{background:#fffae8;border-left:4px solid #d4a000;padding:14px 18px;margin:20px 0;border-radius:0 6px 6px 0;font-size:14.5px;color:#5a4500;line-height:1.6}
+.note strong{color:#a07000;font-family:Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:4px}
+
+/* UNCERTAINTY MARKER */
+.unc{background:#fffae8;color:#a07000;font-family:Arial,sans-serif;font-size:11px;font-weight:700;padding:1px 6px;border-radius:3px;border:1px solid #f0d878;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;vertical-align:middle}
+
+/* INFOGRAPHIC HELPERS */
+.ig-wrap{margin:32px 0;overflow-x:auto}
+.ig-wrap svg{display:block;max-width:100%;height:auto}
+.ig-title{font-family:Arial,sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--o1);margin-bottom:10px}
+.ig-src{font-family:Arial,sans-serif;font-size:11px;color:#bbb;margin-top:6px;font-style:italic}
+
+/* GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+@media(max-width:680px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--o4);border:1px solid var(--border);border-top:3px solid var(--o2);border-radius:0 0 8px 8px;padding:18px 20px}
+.card h4{font-family:Arial,sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--o1);margin:0 0 8px}
+.card p{font-size:14px;color:#444;margin:0;line-height:1.55}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;margin:20px 0}
+.tbl{width:100%;border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px}
+.tbl thead th{background:#2a1200;color:#fff;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.07em;padding:10px 12px;text-align:left;white-space:nowrap}
+.tbl tbody td{padding:9px 12px;border-bottom:1px solid #f5ede4;vertical-align:top;color:#222;line-height:1.45}
+.tbl tbody tr:nth-child(even) td{background:#fdf8f4}
+.tbl tbody tr:hover td{background:var(--o4)}
+.tbl .hi{font-weight:700;color:var(--o1)}
+
+/* TIMELINE */
+.tl{position:relative;margin:28px 0;padding-left:26px}
+.tl::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:3px;background:linear-gradient(to bottom,var(--o2),var(--o1))}
+.tl-item{position:relative;margin-bottom:22px;padding-left:18px}
+.tl-item::before{content:'';position:absolute;left:-22px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--o2);border:3px solid #fff;box-shadow:0 0 0 2px var(--o2)}
+.tl-item .yr{font-family:Arial,sans-serif;font-size:13px;font-weight:800;color:var(--o1);margin-bottom:2px}
+.tl-item .ev{font-size:15px;color:#222;line-height:1.5}
+.tl-item .src{font-size:11px;color:#bbb;margin-top:2px;font-family:Arial,sans-serif}
+.tl-item.big::before{background:var(--o1);width:15px;height:15px;left:-24px;top:5px}
+.tl-item.big .yr{font-size:15px}
+
+/* REFS */
+.refs{background:#f7f0e8;border-radius:8px;padding:24px 28px;margin-top:48px}
+.refs h3{font-family:Arial,sans-serif;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--o1);margin:20px 0 8px}
+.refs h3:first-child{margin-top:0}
+.refs .ref{font-family:Arial,sans-serif;font-size:12.5px;color:#555;margin:5px 0;line-height:1.55}
+.refs .ref b{color:var(--o1)}
+.refs .ref a{color:var(--o1);word-break:break-all}
+.cite-ref{font-family:Arial,sans-serif;font-size:.88em;font-weight:700}
+
+/* FOOTER */
+.footer{border-top:2px solid var(--border);padding-top:24px;margin-top:56px;font-family:Arial,sans-serif;font-size:13px;color:#aaa}
+</style>
+
+
+<div class="p">
+<div class="hero">
+  <div class="hero-tag">Memória amadora · Versão v2 · Maio 2026</div>
+  <h1>Trail Running em Portugal:<br><span>Uma História de Montanha,<br>Resistência e Comunidade</span></h1>
+  <p class="hero-sub">Das corridas de montanha da FPME em 1998 à consagração internacional em dois Campeonatos do Mundo — uma síntese pessoal sobre a evolução da modalidade em Portugal.</p>
+  <div class="hero-meta">
+    <span>🏔 <b>Portugal · 1995–2026</b></span>
+    <span>📖 <b>Memória de praticante</b></span>
+    <span>📊 <b>22 capítulos</b></span>
+  </div>
+</div>
+
+<div class="amateur">
+<b>O que este texto é, e o que não é.</b> Este documento é uma memória amadora, escrita por um praticante e ex-dirigente da modalidade. Não é um estudo histórico académico, não tem revisão por pares, não foi sustentado em pesquisa primária sistemática (entrevistas formais, arquivos institucionais, fundos privados) e contém o viés inevitável de quem escreve a partir de dentro. Vale como ponto de partida e como contributo para uma história mais rigorosa que outros, em devido tempo, terão de fazer.
+</div>
+
+<div class="sband">
+  <div class="sband-i"><div class="n">~9×<span class="e">est</span></div><div class="l">Crescimento de provas<br>2009–2015</div></div>
+  <div class="sband-i"><div class="n">~11 000<span class="e">est</span></div><div class="l">Associados ATRP<br>em 2020</div></div>
+  <div class="sband-i"><div class="n">2 724</div><div class="l">Atletas MIUT<br>2019</div></div>
+  <div class="sband-i"><div class="n">52</div><div class="l">Países no MIUT<br>2019</div></div>
+  <div class="sband-i"><div class="n">2</div><div class="l">Campeonatos do Mundo<br>em solo português</div></div>
+  <div class="sband-i"><div class="n">23 835</div><div class="l">Filiados FPA<br>2024</div></div>
+</div>
+
+<div class="body">
+
+<div class="toc">
+  <div class="toc-title">Índice</div>
+  <ol>
+    <li><a href="#coi">Declaração de interesses</a></li>
+    <li><a href="#meta">Nota Metodológica</a></li>
+    <li><a href="#intro">Nota Introdutória</a></li>
+    <li><a href="#c1">Contexto Global</a></li>
+    <li><a href="#c2">Raízes Portuguesas</a></li>
+    <li><a href="#c3">Corridas de Montanha</a></li>
+    <li><a href="#c4">A Primeira Vaga</a></li>
+    <li><a href="#c5">A Explosão (2010–2016)</a></li>
+    <li><a href="#c6">Crescimento e Dados</a></li>
+    <li><a href="#c7">Provas Icónicas</a></li>
+    <li><a href="#c8">Atletas e Protagonistas</a></li>
+    <li><a href="#c9">Corpo, Mente, Nutrição e Equipamento</a></li>
+    <li><a href="#c14">Cultura e Território</a></li>
+    <li><a href="#c15">Os Voluntários</a></li>
+    <li><a href="#c16">Ecossistema Amador</a></li>
+    <li><a href="#c18">Incêndios de 2017</a></li>
+    <li><a href="#c19">Cronologia</a></li>
+    <li><a href="#c20">Estatísticas</a></li>
+    <li><a href="#c21">Lacunas e Perspectivas</a></li>
+    <li><a href="#c22">Nota Final</a></li>
+    <li><a href="#refs">Referências</a></li>
+  </ol>
+</div>
+
+
+<h2 id="coi">Declaração de Interesses</h2>
+<div class="coi">
+<div class="coi-title">Quem escreve este texto, e a partir de onde</div>
+<p>Sou cofundador da Associação de Trail Running de Portugal (ATRP), praticante de trail running desde 2010, finisher de nove provas de 100 milhas, autor do blog <em>dorsal1967</em> citado no próprio texto, e participante regular nos circuitos nacionais ao longo de mais de uma década. Vários dos protagonistas mencionados neste documento são pessoas com quem trabalhei, treinei, organizei circuitos ou tenho relações de amizade.</p>
+<p>Esta proximidade torna possível este texto — pelo acesso a memória, contactos e contexto — e, ao mesmo tempo, condiciona-o. O leitor deve assumir que a narrativa institucional, em particular tudo o que diz respeito à ATRP e ao processo de integração com a Federação Portuguesa de Atletismo, é contada de uma posição interna, e não a partir de uma observação neutra. Os capítulos sobre conflitos institucionais, política federativa e relação com a FPME, a FCMP e a FPA são, por isso, deliberadamente sumários: tratá-los a fundo exigiria um trabalho que não estou em posição de fazer com a distância necessária.</p>
+<p>Tentei ser leal aos factos onde os conheço e cauteloso onde não os conheço. Sublinho cada estimativa como tal, sinalizo cada fonte que não consegui verificar, e prefiro deixar buracos visíveis a tapá-los com afirmações que não consigo sustentar.</p>
+</div>
+
+
+<h2 id="meta">Nota Metodológica</h2>
+<p>A história do trail running em Portugal não nasce de um único momento fundador. Para evitar uma leitura simplista, este documento distingue três genealogias que se sobrepõem no tempo:</p>
+
+
+<div class="ig-wrap">
+<svg viewBox="0 0 760 170" xmlns="http://www.w3.org/2000/svg" style="max-width:760px;width:100%">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d45c00"/>
+      <stop offset="100%" stop-color="#e87020"/>
+    </linearGradient>
+    <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#e0c4a8"/></marker>
+  </defs>
+  <line x1="220" y1="85" x2="255" y2="85" stroke="#e0c4a8" stroke-width="2" marker-end="url(#arr)"/>
+  <line x1="490" y1="85" x2="525" y2="85" stroke="#e0c4a8" stroke-width="2" marker-end="url(#arr)"/>
+  <rect x="10" y="20" width="210" height="130" rx="8" fill="#fff8f3" stroke="#e0c4a8" stroke-width="1.5"/>
+  <rect x="10" y="20" width="210" height="8" rx="8" fill="#d45c00"/>
+  <rect x="10" y="24" width="210" height="4" fill="#d45c00"/>
+  <text x="115" y="52" text-anchor="middle" font-family="Arial" font-size="13" font-weight="800" fill="#d45c00">Corridas de Montanha</text>
+  <text x="115" y="70" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">Fase federativa · FPME/FCMP</text>
+  <text x="115" y="87" text-anchor="middle" font-family="Arial" font-size="11" fill="#555">1995–2005</text>
+  <text x="115" y="108" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">Campeonatos nacionais</text>
+  <text x="115" y="122" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">Circuito de montanha</text>
+  <text x="115" y="136" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">Geração atlética formada</text>
+  <rect x="260" y="20" width="230" height="130" rx="8" fill="#fff3e6" stroke="#e0c4a8" stroke-width="1.5"/>
+  <rect x="260" y="20" width="230" height="8" rx="8" fill="#e87020"/>
+  <rect x="260" y="24" width="230" height="4" fill="#e87020"/>
+  <text x="375" y="52" text-anchor="middle" font-family="Arial" font-size="13" font-weight="800" fill="#e87020">Provas com DNA de Trail</text>
+  <text x="375" y="70" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">Transição · terreno natural</text>
+  <text x="375" y="87" text-anchor="middle" font-family="Arial" font-size="11" fill="#555">1999–2007</text>
+  <text x="375" y="108" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">Desnível + trilhos + natureza</text>
+  <text x="375" y="122" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">ACP São Mamede 1999</text>
+  <text x="375" y="136" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">Sem cultura trail europeia ainda</text>
+  <rect x="530" y="20" width="220" height="130" rx="8" fill="#ffeedd" stroke="#d45c00" stroke-width="2"/>
+  <rect x="530" y="20" width="220" height="8" rx="8" fill="url(#g1)"/>
+  <rect x="530" y="24" width="220" height="4" fill="url(#g1)"/>
+  <text x="640" y="52" text-anchor="middle" font-family="Arial" font-size="13" font-weight="800" fill="#d45c00">Trail Running Moderno</text>
+  <text x="640" y="70" text-anchor="middle" font-family="Arial" font-size="11" fill="#888">Influência UTMB · circuito europeu</text>
+  <text x="640" y="87" text-anchor="middle" font-family="Arial" font-size="11" fill="#555">2006 →</text>
+  <text x="640" y="108" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">UTSF · MIUT · AXtrail · ATRP</text>
+  <text x="640" y="122" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">Comunidades digitais · GPS</text>
+  <text x="640" y="136" text-anchor="middle" font-family="Arial" font-size="10" fill="#555">Campeonatos do Mundo</text>
+</svg>
+</div>
+
+
+<p>Quando este documento usa os termos "primeiro", "pioneiro", "fundador" ou "mais antigo", esses qualificativos aplicam-se sempre a uma das categorias acima, nunca de forma absoluta. O trail português não nasceu de um único dia; resultou da convergência de múltiplas tradições e projectos.</p>
+
+<p><strong>Sobre as fontes.</strong> A bibliografia consultada está organizada por categoria temática e referenciada no texto pelo sistema [R1]–[R52]. Sempre que uma afirmação se apoia em estimativa, fonte indisponível à data de redacção ou memória pessoal, é assinalada como tal — com a marca <span class="unc">est</span> ao lado de valores aproximados, com itálico cinzento em parágrafos com fonte fragilizada, e em caixas próprias quando a fragilidade é central ao argumento. Reconheço que muitas das fontes mobilizadas são da própria comunidade do trail (blogs, sítios de provas, arquivos digitais mantidos por voluntários) — o que é coerente com o estatuto amador deste texto, mas significa também que a triangulação com fontes independentes é, em vários pontos, insuficiente.</p>
+
+<div class="warn"><strong>⚠ Ausência de historiografia prévia</strong>
+<p>Esta é uma constatação que vale a pena fazer logo aqui, porque condiciona tudo o que se segue. <strong>Não existe, tanto quanto consegui apurar, historiografia académica sobre o trail running em Portugal.</strong> Não há nenhuma tese, monografia ou artigo de história do desporto que tome como objecto a evolução da modalidade, os seus fundadores, as suas instituições, os seus conflitos.</p>
+<p>O que existe — e que mobilizo nos capítulos seguintes — é literatura académica em ciências do desporto, geografia e turismo que <em>usa o trail running português como amostra</em> para estudar fisiologia, psicologia, lesões, motivação, perfil dos praticantes ou impacto territorial. É útil, e está sub-representada na v1 deste documento; mas não é história, e não substitui o trabalho historiográfico que está por fazer. O presente texto, com as suas limitações de amador, é portanto, tanto quanto sei, dos primeiros esforços de sistematização — facto que torna o cuidado metodológico mais importante (porque o texto pode ser citado por outros como referência), mas não substitui a história rigorosa que outros, em devido tempo, terão de escrever.</p>
+</div>
+
+<div class="box"><div class="box-title">Critério editorial para "primeira prova"</div>
+<p>"Corridas de montanha" designa o percurso federado e competitivo que antecede o trail moderno. "Provas com DNA de trail" designa eventos em terreno natural que antecipam a linguagem actual. "Trail moderno" designa provas desenhadas com a cultura, distância, autonomia, tecnicidade e experiência territorial que passaram a caracterizar a modalidade na década de 2000.</p></div>
+
+
+<h2 id="intro">Nota Introdutória</h2>
+<p>Este documento é uma síntese sobre a evolução do trail running em Portugal — desde as corridas em montanha dos anos 1990 até à modalidade hoje organizada em circuitos federativos. Aborda os seus protagonistas, as provas que marcaram cada época, as estruturas associativas e federativas, e tenta tocar — com a brevidade e a cautela que o estatuto amador impõem — alguns aspectos científicos, culturais e sociológicos.</p>
+<p>O leitor encontrará um documento desigual: capítulos onde sou testemunha directa têm densidade de detalhe que outros não têm; capítulos onde dependo de literatura externa (fisiologia, psicologia, comparação internacional) são inevitavelmente mais sumários. Onde a desigualdade for escândalo, esforço-me por dizê-lo.</p>
+
+<p class="lead">O trail running é também uma comunidade humana construída por pessoas que raramente apareceram nas capas: organizadores voluntários, arquivistas digitais, treinadores amadores, bloguers, fotógrafos, famílias e corredores de todas as condições físicas. Procuro mencioná-los — sem fingir que esgoto a tarefa.</p>
+
+
+<h2 id="c1">1. Contexto Global: As Origens do Trail Running no Mundo</h2>
+<h3>1.1. Raízes Ancestrais</h3>
+<p>A corrida em terreno natural é o gesto atlético mais antigo da humanidade. As culturas do pastoreio nas serras da Península Ibérica, os mensageiros de civilizações pré-colombianas, e os Tarahumara do México (popularizados internacionalmente pelo livro <em>Born to Run</em> de Christopher McDougall, 2009) são alguns testemunhos desta vocação. Na Europa, as primeiras corridas organizadas em terreno acidentado surgem no século XIX em Inglaterra e Escócia sob a forma do <em>fell running</em> — corridas em montanha sem percurso totalmente marcado.</p>
+<h3>1.2. O Trail Running Moderno</h3>
+<p>O trail running como modalidade organizada tem origem contemporânea nos Estados Unidos, com provas como a Western States Endurance Run (1974) e a Leadville Trail 100 (1983). Em 1996 foi fundada a American Trail Running Association (ATRA). Na Europa, foi o <strong>Ultra Trail du Mont Blanc</strong> (UTMB), criado em 2003 por Michel e Catherine Poletti, que projectou a modalidade para escala global. A International Trail Running Association (ITRA) foi fundada em 2013 e, em 2015, a World Athletics reconheceu oficialmente o trail running como disciplina do atletismo. [R1][R2]</p>
+
+
+<div class="ig-title">Marcos globais do trail running moderno</div>
+<div class="ig-wrap">
+<svg viewBox="0 0 760 90" xmlns="http://www.w3.org/2000/svg" style="max-width:760px;width:100%">
+  <defs><marker id="a2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#d45c00"/></marker></defs>
+  <line x1="28" y1="45" x2="730" y2="45" stroke="#d45c00" stroke-width="2" marker-end="url(#a2)"/>
+  <circle cx="60" cy="45" r="7" fill="#e87020"/>
+  <text x="60" y="24" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">1974</text>
+  <text x="60" y="38" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Western States</text>
+  <text x="60" y="62" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">100 milhas EUA</text>
+  <circle cx="190" cy="45" r="7" fill="#e87020"/>
+  <text x="190" y="24" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">1983</text>
+  <text x="190" y="38" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Leadville 100</text>
+  <text x="190" y="62" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">Montanha EUA</text>
+  <circle cx="310" cy="45" r="7" fill="#e87020"/>
+  <text x="310" y="24" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">1996</text>
+  <text x="310" y="38" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">ATRA fundada</text>
+  <text x="310" y="62" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">EUA · 1.ª assoc.</text>
+  <circle cx="430" cy="45" r="10" fill="#d45c00"/>
+  <text x="430" y="22" text-anchor="middle" font-family="Arial" font-size="12" font-weight="800" fill="#d45c00">2003</text>
+  <text x="430" y="36" text-anchor="middle" font-family="Arial" font-size="10" font-weight="700" fill="#d45c00">UTMB</text>
+  <text x="430" y="62" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">170 km · Alpes</text>
+  <text x="430" y="74" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">Poletti</text>
+  <circle cx="570" cy="45" r="7" fill="#e87020"/>
+  <text x="570" y="24" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">2013</text>
+  <text x="570" y="38" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">ITRA fundada</text>
+  <text x="570" y="62" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">Rankings globais</text>
+  <circle cx="670" cy="45" r="7" fill="#e87020"/>
+  <text x="670" y="24" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">2015</text>
+  <text x="670" y="38" text-anchor="middle" font-family="Arial" font-size="9" fill="#888">World Athletics</text>
+  <text x="670" y="62" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">Disciplina oficial</text>
+</svg>
+</div>
+<div class="ig-src">Fonte: ITRA, World Athletics [R1][R2]</div>
+
+<div class="note"><strong>Lacuna assumida</strong>O contexto comparativo ibérico — sobretudo a história do trail em Espanha (FEDME, Salomon Spain Series, La Sportiva Mountain Running Cup) — está fora do alcance deste texto. Uma análise séria do caso português exigiria essa comparação, e fica como uma das principais lacunas que reconheço.</div>
+
+
+<h2 id="c2">2. Raízes Portuguesas: Da Montanha à Corrida</h2>
+<h3>2.1. A Tradição de Andar na Montanha</h3>
+<p>Em Portugal, a relação com a montanha tem raízes profundas. As comunidades serranas do Minho, Trás-os-Montes, Beiras e Alentejo utilizaram historicamente os trilhos como vias de comunicação. Romarias, marchas de peregrinação e festas em santuários de altura criaram uma cultura de deslocação pedestre em terreno natural que, sem carácter competitivo, antecedeu a modalidade actual. [R3]</p>
+<p>A Federação de Campismo e Montanhismo de Portugal (FCMP), criada em 1945 como Federação Portuguesa de Campismo e que incorporou o montanhismo em 1991, foi a primeira estrutura federativa a organizar actividades em montanha. [R3]</p>
+<h3>2.2. Os Clubes de Montanha</h3>
+<p>Décadas antes do trail running, vários clubes de montanhismo foram guardiões dos trilhos: o Clube de Montanha do Funchal (Madeira), os Amigos da Montanha de Barcelos, o Clube Celtas do Minho, entre outros. Muitos dos primeiros trail runners portugueses tinham raízes nestas comunidades. Em Julho de 2002, foi fundada a Federação Portuguesa de Montanhismo e Escalada (FPME), com missão autónoma de promover e regulamentar as actividades de montanha. [R4]</p>
+<h3>2.3. O Pedestrianismo</h3>
+<p>O pedestrianismo organizado — marchas em trilhos marcados — multiplicou-se nas décadas de 1980 e 1990, criando uma cultura de acesso e respeito pelos trilhos que aproximou populações urbanas de territórios rurais.</p>
+
+
+<h2 id="c3">3. As Corridas de Montanha: O Elo de Ligação (1995–2005)</h2>
+<h3>3.1. O Campeonato Nacional de Corridas de Montanha</h3>
+<p>Em 1998 realizou-se a 1.ª edição do Campeonato Nacional de Corridas de Montanha, organizado sob a égide da FPME (então ainda integrada na FCMP). Foi a primeira prova competitiva nacional concebida especificamente para correr em terreno de montanha. [R5][R6]</p>
+<p>Os resultados da 1.ª edição revelaram talentos como <strong>Vitorina Mourato</strong> (campeã feminina) e <strong>Vítor Cordeiro</strong> (vice-campeão masculino), ambos do Atletismo Clube de Portalegre — clube que seria pioneiro também nas primeiras provas de trail. Vitorina Mourato representa uma geração que correu antes de existir a palavra "trail" em Portugal.</p>
+<h3>3.2. As Primeiras Provas com DNA de Trail</h3>
+<p>O Atletismo Clube de Portalegre organizou, em Abril de 1999, o que pode ser considerado um dos primeiros trails com DNA moderno em Portugal continental: percurso de 11 km na Serra de São Mamede, com desnível, trilhos e terreno natural. Em 2000, o mesmo clube organizou uma das jornadas do 3.º Campeonato Nacional de Montanha da FPME, na Serra da Penha. [R6]</p>
+<p>No mesmo período, a Confraria Trotamontes ensaiava os primeiros passos em direcção à Ultra Trail da Geira Romana, encontrando na Via Nova Romana o percurso para uma prova que uniria desafio físico, história e paisagem.</p>
+<h3>3.3. A FPME como Estrutura Organizadora</h3>
+<p>A FPME, autonomizada em 2002, assumiu a tutela das corridas de montanha. O seu Circuito Nacional de Montanha tornou-se a espinha dorsal competitiva das corridas em terreno natural em Portugal e formou a primeira geração de atletas portugueses experientes em terreno de montanha. Quando o trail moderno chegou, encontrou já uma cultura competitiva estabelecida pronta a adoptar a nova linguagem. [R5]</p>
+
+
+<h2 id="c4">4. A Primeira Vaga: O Trail Running Chega a Portugal (2005–2012)</h2>
+<h3>4.1. O Despertar — Os Primeiros Ultra Trails</h3>
+<p>A segunda metade da década de 2000 marcou uma inflexão. Atletas portugueses que tinham participado nas primeiras edições do UTMB ou em corridas como o Grand Raid des Pyrénées regressaram com um conceito diferente: o trail europeu era mais longo, mais técnico e mais sedutor do que as corridas de montanha praticadas em Portugal.</p>
+<p>Entre os pioneiros, <strong>Carlos Sá</strong> ocupa um lugar de destaque. Natural de Vilar do Monte (Barcelos), iniciou-se no montanhismo antes de descobrir o ultra trail. Em 2008, estreou-se na Ultra Trail da Geira (45 km) com um 2.º lugar; em 2009 venceu a mesma prova; em 2010 conquistou o Grand Raid des Pyrénées (160 km, 20.000 m de desnível), colocando Portugal no mapa internacional do ultra trail. [R7][R8]</p>
+<div class="pull"><p>"Ver 2000 pessoas a correr 170 km sem parar foi o primeiro passo para começar a olhar para o Trail Running de outra forma. Sentir a liberdade, descobrir novos trilhos e paisagens; tentar ir mais longe, para lá do limite."</p><cite>— Carlos Sá, em entrevista a CorrerPorPrazer [R9]</cite></div>
+<h3>4.2. A Ultra Trail da Serra da Freita</h3>
+<p>A Ultra Trail da Serra da Freita (UTSF) é, segundo a Confraria Trotamontes e a memória da comunidade, a primeira prova em Portugal continental concebida e organizada com a linguagem do trail moderno <span class="unc">memória comunitária</span>. A sua origem está em Verdon (sudeste de França), onde <strong>José Moutinho</strong> — Grão Mestre da Confraria, sediada em Gueifães (Maia) — participou numa prova que classificou como referência. Nos quatro anos seguintes, percorreu provas em França para aprender o conceito. Juntamente com <strong>Sálvio Nora</strong> — companheiro de fundação, falecido entretanto, a quem a prova é hoje dedicada — descobriu a Serra da Freita. Em 2006 realizou-se a 1.ª edição: 50 km na Serra da Freita. A logística ficou desde sempre nas mãos de <strong>Flor Madureira</strong>, que se tornou a coluna vertebral operacional da Confraria ao longo de quase duas décadas.</p>
+<p>Os percursos de Moutinho ficaram conhecidos pelas suas "moutinhadas" — secções de extrema dificuldade morfológica: o "portal do inferno", os "aztecas", a subida das "escadas do martírio". A filosofia era clara: trail não é correr depressa, é ler o terreno.</p>
+<div class="pull"><p>"A própria confraria começou a agir como se isso fosse uma missão, não olhávamos só para o nosso umbigo. Achámos que o método seria criar células em todo o país com organizações e criar provas para se começar a dinamizar esta modalidade de trail."</p><cite>— José Moutinho, em testemunho recolhido pela Confraria Trotamontes</cite></div>
+<h3>4.3. A Ultra Trail da Geira Romana</h3>
+<p>Percorrendo a Via Nova Romana — estrada construída pelos romanos no século I d.C. que atravessa o Parque Nacional da Peneda-Gerês — a Ultra Trail da Geira Romana é uma das provas mais singulares do calendário. Os corredores passam por miliários romanos e atravessam ribeiras até às cumeadas do Gerês, percorrendo caminhos pisados há dois mil anos. [R10]</p>
+<h3>4.4. O Nascimento do MIUT</h3>
+<p>O Madeira Island Ultra Trail (MIUT) teve a 1.ª edição em 2008 e tornou-se rapidamente a mais ambiciosa prova de trail running em solo português. Na sua génese esteve um grupo de membros do Clube de Montanha do Funchal que desde 2004 tentavam atravessar a ilha em menos de 24 horas. A 1.ª edição contou com 141 participantes na ligação Ponta do Pargo–Machico. O percurso principal, hoje com cerca de 115 km e mais de 6.000 metros de desnível, atravessa a laurissilva classificada como Património Mundial da UNESCO e é considerado um dos mais tecnicamente exigentes do circuito europeu. [R11][R12]</p>
+<h3>4.5. A Comunidade Online — Fóruns e Blogs</h3>
+<p>Antes das redes sociais, o fórum "O Mundo da Corrida", mantido por Eduardo Santos, foi o espaço onde a comunidade de trail runners portugueses se encontrava. Foi aí que a primeira edição do Ultra Trail de São Mamede foi anunciada e os futuros participantes consultados sobre distâncias e datas — um exemplo pioneiro de co-criação de eventos. A plataforma Portugal Running, criada em Março de 2010 com o grupo de Facebook "Marginal à Noite", sucedeu-lhe como ponto de encontro principal. [R13]</p>
+
+
+<h2 id="c5">5. A Explosão do Trail Running em Portugal (2010–2016)</h2>
+<h3>5.1. Os Catalisadores do Boom</h3>
+<p>Entre 2010 e 2016, o trail running em Portugal registou um crescimento sem precedentes. Segundo o calendário compilado por Carlos Fonseca [R14], o número de provas multiplicou-se aproximadamente nove vezes entre 2009 e meados da década <span class="unc">est</span>. Em 2012 contavam-se cerca de 45 provas agendadas; em 2015, várias centenas.</p>
+<p>Três factores convergiram. Primeiro, os feitos internacionais de Carlos Sá — a vitória na Badwater 2013 (217 km no Vale da Morte, primeiro português a vencer), o recorde no Aconcágua (6.962 m em 15h42m) e os top-10 no UTMB e na Marathon des Sables — geraram visibilidade mediática inédita. Segundo, as redes sociais permitiram a formação rápida de grupos de corrida, a partilha de percursos e a criação de uma identidade visual: uma fotografia ao amanhecer na Serra da Estrela valia mais do que qualquer campanha publicitária. Terceiro, num contexto de crise económica (2010–2014), a corrida tornou-se uma resposta democrática e o trail acrescentou natureza e aventura à equação.</p>
+
+
+<div class="grid3">
+  <div class="card"><h4>🏆 Feitos Internacionais</h4><p>Carlos Sá: Badwater 2013, Aconcágua 2013, top-4 UTMB. Visibilidade mediática inédita para a modalidade em Portugal.</p></div>
+  <div class="card"><h4>📱 Redes Sociais</h4><p>Facebook, Instagram, Strava e WhatsApp permitiram grupos de corrida instantâneos, partilha de percursos e identidade visual apelativa.</p></div>
+  <div class="card"><h4>❤️ Saúde &amp; Bem-estar</h4><p>Crise económica 2010–2014: a corrida como resposta democrática. O trail adicionou natureza, aventura e profundidade emocional.</p></div>
+</div>
+
+
+<h3>5.2. A Fundação da ATRP (2012)</h3>
+<p>Em Novembro de 2012 é fundada a Associação de Trail Running de Portugal (ATRP). A direcção fundadora foi composta por seis atletas: <strong>José Bomtempo</strong>, <strong>José Guimarães</strong>, <strong>José Carlos Santos</strong> (presidente), <strong>Luís Matos Ferreira</strong> (autor deste texto), <strong>Paulo Jorge</strong> e <strong>Pedro Neiva</strong>. Em 2013, <strong>João Mota</strong> juntou-se à direcção. [R15]</p>
+<p>José Carlos Santos — atleta de trail desde 1995 e primeiro presidente (2012–2015) — foi figura central. Após participar na 1.ª Conferência Internacional de Trail Running em Courmayeur, regressou convicto de que Portugal precisava de uma entidade própria. A sua dimensão internacional — cofundador e director executivo da ITRA, seleccionador nacional entre 2015 e 2024 — conferiu desde o início à ATRP uma orientação global.</p>
+<p>Em 2013, poucos meses após a fundação da associação, a ATRP lançou o seu primeiro Circuito Nacional de Trail, com um conjunto inicial de provas seleccionadas. Em 2014, a estrutura competitiva foi aprofundada e alargada, com circuitos por distância, incluindo Trail e Ultra Trail. Em Maio de 2014, a ATRP foi também aceite como associado extraordinário da Federação Portuguesa de Atletismo (FPA). No final de 2013 contava com cerca de 900 associados; em 2020 superava os 11.000 <span class="unc">est, fonte original [R16] indisponível à data — valor citado em comunicação interna ATRP/imprensa, a confirmar</span>. A partir de 2023, com a integração no sistema de filiação da FPA, os atletas que pretendam participar nos circuitos e campeonatos nacionais passaram a filiar-se directamente na Federação. [R15][R16][R17][R35][R36][R37]</p>
+
+<div class="note"><strong>Aviso de proximidade</strong>O autor deste texto faz parte da direcção fundadora citada acima. Tudo o que se segue sobre a ATRP é narrado a partir de uma posição interna. Uma história institucional independente — incluindo as fricções, divergências e debates internos que naturalmente acompanham qualquer construção associativa — está por fazer e não cabe neste documento.</div>
+
+
+<div class="ig-title">ATRP — Crescimento de associados (2012–2020)</div>
+<div class="ig-wrap">
+<svg viewBox="0 0 640 160" xmlns="http://www.w3.org/2000/svg" style="max-width:640px;width:100%">
+  <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e87020"/><stop offset="100%" stop-color="#d45c00" stop-opacity=".6"/></linearGradient></defs>
+  <line x1="60" y1="10" x2="60" y2="120" stroke="#f0d8c0" stroke-width="1"/>
+  <line x1="60" y1="120" x2="620" y2="120" stroke="#d45c00" stroke-width="1.5"/>
+  <line x1="60" y1="80" x2="620" y2="80" stroke="#f5ede4" stroke-width=".5" stroke-dasharray="3,3"/>
+  <line x1="60" y1="40" x2="620" y2="40" stroke="#f5ede4" stroke-width=".5" stroke-dasharray="3,3"/>
+  <text x="54" y="124" text-anchor="end" font-family="Arial" font-size="10" fill="#ccc">0</text>
+  <text x="54" y="84" text-anchor="end" font-family="Arial" font-size="10" fill="#ccc">2500</text>
+  <text x="54" y="44" text-anchor="end" font-family="Arial" font-size="10" fill="#ccc">5500</text>
+  <rect x="80" y="119" width="40" height="1" fill="url(#ga)" rx="1"/>
+  <text x="100" y="135" text-anchor="middle" font-family="Arial" font-size="10" fill="#ccc">2012</text>
+  <rect x="160" y="111" width="40" height="9" fill="url(#ga)" rx="2"/>
+  <text x="180" y="107" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">900</text>
+  <text x="180" y="135" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">2013</text>
+  <rect x="240" y="105" width="40" height="15" fill="url(#ga)" rx="2"/>
+  <text x="260" y="101" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">1500</text>
+  <text x="260" y="135" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">2014</text>
+  <rect x="320" y="80" width="40" height="40" fill="url(#ga)" rx="2"/>
+  <text x="340" y="76" text-anchor="middle" font-family="Arial" font-size="10" fill="#888">~4000</text>
+  <text x="340" y="135" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">2016</text>
+  <rect x="400" y="50" width="40" height="70" fill="url(#ga)" rx="2"/>
+  <text x="420" y="46" text-anchor="middle" font-family="Arial" font-size="10" fill="#d45c00" font-weight="700">~7000</text>
+  <text x="420" y="135" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">2018</text>
+  <rect x="480" y="10" width="40" height="110" fill="url(#ga)" rx="2"/>
+  <text x="500" y="24" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff" font-weight="800">~11 000</text>
+  <text x="500" y="135" text-anchor="middle" font-family="Arial" font-size="10" fill="#aaa">2020</text>
+  <text x="60" y="150" font-family="Arial" font-size="10" fill="#bbb" font-style="italic">Fonte: ATRP / imprensa nacional — valores 2016, 2018 e 2020 são estimativas de comunicação institucional, não auditoria externa</text>
+</svg>
+</div>
+
+
+<h3>5.3. A Primeira Selecção Nacional (Annecy, 2015)</h3>
+<p>Um marco da consolidação institucional foi a presença portuguesa no Campeonato do Mundo de Trail Running de 2015, em Annecy, França — a primeira vez que uma selecção nacional participou numa prova mundial da especialidade. Oito atletas foram seleccionados a partir dos circuitos nacionais de 2013 e 2014: Carlos Sá, Nuno Silva, Luís Mota e Hélder Ferreira (masculinos); Ester Alves, Júlia Conceição, Lucinda Sousa e Susana Simões (femininas). O estágio preparatório decorreu no Vale do Rossim, Serra da Estrela, organizado pela ATRP em parceria com Armando Teixeira e o Estrela Grande Trail. [R18][R19]</p>
+<h3>5.4. Os Campeonatos do Mundo em Solo Português</h3>
+<p>A consagração de Portugal como destino de trail veio com dois Campeonatos do Mundo realizados em solo nacional: em 2016, no Parque Nacional da Peneda-Gerês, e em 2019, em Miranda do Corvo e na região das Aldeias do Xisto. Estes eventos atraíram atletas de dezenas de países e geraram cobertura mediática internacional. O MIUT consolidou-se neste período: em 2015 foi aceite no Ultra Trail World Tour; em 2016 registou 2.041 participantes de 41 países; em 2017 atingiu 2.490 participantes de 45 nacionalidades. [R11]</p>
+
+
+<h2 id="c6">6. Crescimento, Demografias e Dados dos Praticantes</h2>
+<h3>6.1. A Evolução do Número de Provas</h3>
+<p>O crescimento do número de provas é um dos indicadores mais expressivos da popularidade da modalidade. Em 2012 contavam-se cerca de 45 provas agendadas. Os dados de Carlos Fonseca apontam um crescimento de aproximadamente nove vezes entre 2009 e meados da década de 2010 <span class="unc">est</span>. [R14] Em 2015, a dissertação de mestrado da Escola Superior de Hotelaria e Turismo do Estoril sistematizou a evolução dos participantes entre 2006 e 2015 e o perfil dos praticantes — tornando-se a fonte académica de base para compreender a primeira década de crescimento. Em 2018, o estudo de Julião, Valente e Mendes (CICS.NOVA/UNL) registou 68 corridas em 35 eventos no calendário oficial do continente. [R20][R21][R14]</p>
+<h3>6.2. Membros da ATRP</h3>
+<p>Ao fim do primeiro ano de existência (Novembro de 2013), a ATRP contava com cerca de 1.000 <span class="unc">est, comunicação institucional ATRP, não auditado</span> associados em representação de mais de 90 clubes. Em Maio de 2014 tinha 1.500 <span class="unc">est, comunicação institucional ATRP, não auditado</span> associados e representava mais de 120 associações. Em 2020, o número ultrapassava os 11.000 <span class="unc">est, valor de comunicação institucional, não auditado</span>. [R15][R16]</p>
+<h3>6.3. Filiados na Federação Portuguesa de Atletismo</h3>
+<p>Em 2016, a FPA registava 14.542 atletas filiados. A modalidade cresceu de forma consistente, atingindo 19.439 em 2019. A pandemia interrompeu a trajectória: 2021 registou 17.396. A retoma foi vigorosa: 20.273 em 2022, 21.875 em 2023 e 23.835 em 2024, um crescimento de 61% face a 2016. Em 2024, dez associações regionais bateram recordes históricos, com Lisboa (3.504), Porto (2.792) e Madeira (2.137) à cabeça. [R22][R23]</p>
+
+
+<div class="grid2">
+<div>
+<div class="ig-title">Filiados FPA 2016–2024</div>
+<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;width:100%">
+  <line x1="40" y1="20" x2="40" y2="160" stroke="#f0d8c0" stroke-width="1"/>
+  <line x1="40" y1="160" x2="350" y2="160" stroke="#d45c00" stroke-width="1.5"/>
+  <line x1="40" y1="120" x2="350" y2="120" stroke="#f5ede4" stroke-width=".5" stroke-dasharray="3,3"/>
+  <line x1="40" y1="80" x2="350" y2="80" stroke="#f5ede4" stroke-width=".5" stroke-dasharray="3,3"/>
+  <line x1="40" y1="40" x2="350" y2="40" stroke="#f5ede4" stroke-width=".5" stroke-dasharray="3,3"/>
+  <text x="35" y="164" text-anchor="end" font-family="Arial" font-size="9" fill="#ccc">14k</text>
+  <text x="35" y="124" text-anchor="end" font-family="Arial" font-size="9" fill="#ccc">17k</text>
+  <text x="35" y="84" text-anchor="end" font-family="Arial" font-size="9" fill="#ccc">20k</text>
+  <text x="35" y="44" text-anchor="end" font-family="Arial" font-size="9" fill="#ccc">23k</text>
+  <circle cx="70"  cy="160" r="4" fill="#e87020"/>
+  <text x="70"  y="175" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">2016</text>
+  <circle cx="145" cy="97"  r="4" fill="#e87020"/>
+  <text x="145" y="175" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">2019</text>
+  <circle cx="183" cy="99"  r="4" fill="#e87020"/>
+  <circle cx="220" cy="122" r="4" fill="#e0c4a8"/>
+  <text x="220" y="175" text-anchor="middle" font-family="Arial" font-size="9" fill="#ccc">2021</text>
+  <circle cx="260" cy="86"  r="4" fill="#e87020"/>
+  <circle cx="295" cy="65"  r="4" fill="#e87020"/>
+  <circle cx="330" cy="40"  r="5" fill="#d45c00"/>
+  <text x="330" y="32" text-anchor="middle" font-family="Arial" font-size="10" font-weight="700" fill="#d45c00">23 835</text>
+  <text x="330" y="175" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">2024</text>
+  <polyline points="70,160 145,97 183,99 220,122 260,86 295,65 330,40" fill="none" stroke="#d45c00" stroke-width="1.5"/>
+</svg>
+<div class="ig-src">Fonte: FPA — Relatório de Actividade e Contas 2024 [R23]</div>
+</div>
+<div>
+<div class="ig-title">Distribuição regional 2024 (top-5)</div>
+<svg viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" style="max-width:360px;width:100%">
+  <text x="20" y="30" font-family="Arial" font-size="11" fill="#555">Lisboa</text>
+  <rect x="100" y="20" width="200" height="14" fill="#d45c00" rx="2"/>
+  <text x="305" y="30" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">3 504</text>
+  <text x="20" y="60" font-family="Arial" font-size="11" fill="#555">Porto</text>
+  <rect x="100" y="50" width="159" height="14" fill="#e87020" rx="2"/>
+  <text x="265" y="60" font-family="Arial" font-size="11" fill="#e87020">2 792</text>
+  <text x="20" y="90" font-family="Arial" font-size="11" fill="#555">Madeira</text>
+  <rect x="100" y="80" width="122" height="14" fill="#f5a050" rx="2"/>
+  <text x="225" y="90" font-family="Arial" font-size="11" fill="#a04000">2 137</text>
+  <text x="20" y="120" font-family="Arial" font-size="11" fill="#555">Aveiro</text>
+  <rect x="100" y="110" width="98" height="14" fill="#f5a050" opacity=".75" rx="2"/>
+  <text x="200" y="120" font-family="Arial" font-size="10" fill="#888">~1700</text>
+  <text x="20" y="150" font-family="Arial" font-size="11" fill="#555">Braga</text>
+  <rect x="100" y="140" width="92" height="14" fill="#f5a050" opacity=".6" rx="2"/>
+  <text x="195" y="150" font-family="Arial" font-size="10" fill="#888">~1600</text>
+  <text x="20" y="190" font-family="Arial" font-size="9" fill="#bbb" font-style="italic">Lisboa, Porto e Madeira: valores oficiais. Aveiro e Braga: estimativas.</text>
+</svg>
+</div>
+</div>
+<h3>6.4. Perfil dos Praticantes</h3>
+<p>Os estudos disponíveis traçam um perfil aproximado: predominantemente masculino (apesar de a participação feminina ter crescido significativamente nos anos recentes — segundo a ATRP, de cerca de 15% no início para próximo de 30% em 2025 <span class="unc">est</span>); com idade média entre os 35 e os 50 anos; com habilitações literárias acima da média nacional; com profissões de classe média e média-alta. Esta sociologia tem implicações importantes para qualquer afirmação sobre o trail como modalidade "democrática" — voltarei ao tema mais à frente. [R20][R21]</p>
+
+
+<h2 id="c7">7. As Provas Icónicas — Geografia do Trail Português</h2>
+<p>O trail português distribui-se geograficamente por todo o território, com concentrações regionais que reflectem a topografia e a tradição associativa. Cinco provas merecem destaque pela sua dimensão histórica.</p>
+<h3>7.1. MIUT — Madeira Island Ultra Trail</h3>
+<p>O MIUT é, desde 2008, a prova-bandeira do trail português a nível internacional. A travessia da ilha da Madeira de Porto Moniz a Machico, com cerca de 115 km e mais de 6.000 metros de desnível, atravessa a laurissilva e oferece um percurso tecnicamente exigente. A entrada no Ultra Trail World Tour em 2015 elevou a sua dimensão internacional. [R11][R12]</p>
+<h3>7.2. UTSF — Ultra Trail Serra da Freita</h3>
+<p>A UTSF é a prova matricial do trail moderno em Portugal continental, organizada pela Confraria Trotamontes desde 2006. Apesar das dimensões modestas em comparação com o MIUT, o seu peso simbólico na comunidade é considerável: foi a primeira a importar o vocabulário e a lógica do trail europeu. As "moutinhadas" — secções de extrema dificuldade desenhadas por José Moutinho — tornaram-se referência cultural.</p>
+<h3>7.3. UTSM — Ultra Trail Serra de São Mamede</h3>
+<p>Organizado pelo Atletismo Clube de Portalegre desde 2008, o UTSM tem uma genealogia especial: o ACP foi também o organizador do primeiro trail com DNA moderno (1999) e de jornadas do Campeonato Nacional de Corridas de Montanha. Vitorina Mourato, primeira campeã nacional de corridas de montanha em 1998, foi cofundadora. A prova foi interrompida e regressou em 2025. [R6][R24]</p>
+<h3>7.4. UTAX — Ultra Trail Aldeias do Xisto</h3>
+<p>O AXtrail/UTAX, nas Aldeias do Xisto, é exemplo de prova que se enraíza num projecto territorial: as próprias Aldeias do Xisto são uma rede de cooperação intermunicipal de desenvolvimento rural. A prova destrói-se e reconstrói-se ao longo dos anos com os incêndios e as recuperações dos trilhos. Foi palco do Campeonato do Mundo de 2019, parcialmente. [R25]</p>
+<h3>7.5. Ultra Trail da Geira Romana</h3>
+<p>Organizada pela Confraria Trotamontes na Peneda-Gerês, segue a Via Nova Romana e cruza um dos cenários arqueológicos mais relevantes da Península Ibérica. Mais do que uma prova, é um exercício de arqueologia em movimento.</p>
+<div class="note"><strong>Lacuna assumida</strong><br><br>
+
+Esta lista é parcial e marcada pela geografia onde o autor pratica e organiza. Provas igualmente importantes ficam sem o espaço que mereceriam. Uma lista mais representativa incluiria, entre muitas outras:
+
+<br><br><strong>Norte:</strong><br>
+Ultra Trail do Marão (Amarante), TransPeneda-Gerês (Parque Nacional da Peneda-Gerês / Montalegre e Terras de Bouro), Trail Amigos da Montanha (Barcelos), Grande Trail Fisgas de Ermelo (Mondim de Basto / Serra do Alvão).
+
+<br><br><strong>Centro:</strong><br>
+Estrela Grande Trail (Manteigas), Oh Meu Deus by UTMB / Ultra Trail Centro Portugal (Seia, Serra da Estrela, Açor e Lousã), EstrelAçor Trail Ultra Endurance (Penhas da Saúde, Covilhã), Louzantrail (Serra da Lousã), Góis Trail — Entre a Serra e o Ceira (Góis), Trilhos dos Abutres (Miranda do Corvo — palco do Mundial de Trail de 2019).
+
+<br><br><strong>Centro Interior e Centro-Sul:</strong><br>
+Ultra Trilhos da Gardunha (Louriçal do Campo / Castelo Branco), Trail da Cereja (Fundão / Serra da Gardunha), Trail de Marvão (Marvão / Serra de São Mamede), Proença Cross Trail (Proença-a-Nova).
+
+<br><br><strong>Lisboa, Tejo e Setúbal:</strong><br>
+Sintra Trail — Monte da Lua e Cruz Alta (Sintra), Trilhos de Almourol (Entroncamento / Castelo de Almourol / Médio Tejo), Trail do Almonda (Pedrógão, Torres Novas / Serra d'Aire), Trilhos do Javali (Setúbal / Arrábida).
+
+<br><br><strong>Sul:</strong><br>
+Trail da Costa Vicentina (Porto Covo / Santiago do Cacém), Algarviana Ultra Trail — ALUT (interior algarvio), Algarve Xtreme Trail (Querença / Serra do Caldeirão), Trail Entre os Moinhos do Guadiana ou Trail do Falcão Real (Baixo Guadiana / Alcoutim).
+
+<br><br><strong>Ilhas:</strong><br>
+Ultra Blue Island by Azores Trail Run (Faial), Triangle Adventure by Azores Trail Run (Pico, São Jorge e Faial), Trail dos Morcegos (São Miguel), Trail do Queijo da Fajãzinha (Flores), MIUT — Madeira Island Ultra-Trail (Madeira).
+
+<br><br>
+Esta enumeração é ela própria incompleta. O calendário nacional conta centenas de provas anuais — um inventário rigoroso exigiria trabalho sistemático que este texto não fez.</div>
+
+
+<h2 id="c8">8. Atletas e Protagonistas</h2>
+<p>Esta selecção é representativa, não exaustiva. Reflecte uma escolha pessoal e está enviesada para atletas próximos da geografia onde o autor praticou. Para um inventário mais alargado, ver os arquivos de João Lima [R26] e Carlos Fonseca [R14].</p>
+
+<h3>8.1. Carlos Sá</h3>
+<p>Carlos Sá é, em qualquer leitura, a figura central do trail português. Os feitos internacionais entre 2010 e 2017 colocaram Portugal no mapa mundial da modalidade. A vitória na Badwater 2013 (217 km no Vale da Morte, em 24h38m) é especialmente significativa: foi o primeiro português a vencer a prova. [R7][R8][R27]</p>
+
+
+<div class="ig-title">Carlos Sá — palmarés internacional (selecção)</div>
+<div class="tbl-wrap">
+<table class="tbl">
+  <thead><tr><th>Ano</th><th>Prova</th><th>Resultado</th></tr></thead>
+  <tbody>
+    <tr><td>2010</td><td>Grand Raid des Pyrénées (160 km / 20.000 mD+)</td><td class="hi">1.º absoluto</td></tr>
+    <tr><td>2011</td><td>UTMB (170 km)</td><td>5.º geral — 22h48m</td></tr>
+    <tr><td>2012</td><td>UTMB (170 km)</td><td>4.º geral</td></tr>
+    <tr><td>2012</td><td>Marathon des Sables (250 km)</td><td>4.º / melhor europeu</td></tr>
+    <tr><td>2013</td><td>MIUT — 1.º Campeão Nacional Ultra Trail</td><td class="hi">1.º absoluto</td></tr>
+    <tr><td>2013</td><td>Aconcágua — recorde mundial ascensão+descida</td><td class="hi">15h42m</td></tr>
+    <tr><td>2013</td><td>Badwater Ultramarathon (217 km, Vale da Morte)</td><td class="hi">1.º absoluto — 24h38m</td></tr>
+    <tr><td>2014</td><td>Marathon des Sables</td><td>4.º lugar</td></tr>
+    <tr><td>2017</td><td>Tor des Géants (330 km, Itália)</td><td>4.º lugar</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="ig-src">Fontes: site oficial de Carlos Sá [R8] (à data inacessível), Wikipédia PT [R27], AdventureCORPS [R28]</div>
+
+
+<h3>8.2. Armando Teixeira</h3>
+<p>Armando Teixeira começou a correr aos 33 anos. Ex-técnico de alta tensão, deixou a profissão para se dedicar ao desporto e à formação académica. Capitão de equipa em dois Campeonatos do Mundo (2016 e 2018), foi nomeado Seleccionador Nacional de Trail Running em 2024 (sucedendo a José Carlos Santos). Coorganiza o Estrela Grande Trail em Manteigas. <span class="unc">biografia segundo testemunho directo e cobertura jornalística — datas exactas a confirmar contra fonte primária</span></p>
+<h3>8.3. As Atletas Femininas — uma história por escrever</h3>
+<p>Aqui devo ser sincero: este capítulo está mal feito. Posso enumerar nomes — Ana Carolina Oliveira, Ana Duarte, Ana Quinta, Cármen Henriques, Célia Azenha, Cristina Moura, Ester Alves-Santos, Fátima Buchas, Flor Madureira, Glória Serrazina, Inês Marques, Mariana Ballester, Margarida Bagão, Paula Soares, Raquel Campos, Sofia Roquete; e, na geração das corridas de montanha, Vitorina Mourato — mas o que cada uma destas atletas representa, organizou, criou, perdeu e venceu não cabe nas linhas de que disponho. Vitorina Mourato, campeã feminina do 1.º Campeonato Nacional de Corridas de Montanha em 1998 e cofundadora do UTSM, é a primeira heroína desportiva desta genealogia, mas a sua história — como a das outras — exige um trabalho de recolha que este texto não fez. Flor Madureira é a organizadora que tornou a UTSF possível durante quase duas décadas. <strong>O capítulo das mulheres no trail português está por escrever, e é a maior lacuna deste documento.</strong></p>
+<h3>8.4. Os Veteranos: Jorge Serrazina e Outros</h3>
+<p>O trail português tem uma cultura veterana invulgarmente forte. <strong>Jorge Serrazina</strong>, natural de Óbidos, começou a correr aos 47 anos por convite de um vizinho. Nos anos seguintes escalou sistematicamente as distâncias: Everest Trail Race no Nepal, Grand Raid des Pyrénées, Marathon des Sables, múltiplas participações no Tor des Géants. <strong>Vítor Cordeiro</strong>, vice-campeão masculino em 1998, mantinha-se em competição em 2025 com 60+ anos. <strong>Teodoro Trindade</strong>, actualmente na categoria M65 mas com percurso de longa data, acumulou mais de 50 provas e milhares de quilómetros. Estes percursos são dimensão real e pouco estudada da modalidade.</p>
+<h3>8.5. Organizadores e Bastidores</h3>
+<p>A história não se conta só pelos atletas. <strong>José Moutinho</strong> representa a matriz fundadora do trail moderno em Portugal. <strong>Flor Madureira</strong> representa o trabalho logístico sem o qual as grandes provas não sobrevivem. <strong>Vitorino Coragem</strong> (1952–2020), figura muito reconhecida e querida do meio, representa os criadores de percurso. <strong>Tiago Araújo</strong> e a Associação Abútrica representam a capacidade de uma comunidade local construir um evento de dimensão mundial (Mundial 2019). <strong>João Lima</strong> e <strong>Carlos Fonseca</strong> representam a preservação da memória estatística. <strong>Eduardo Santos</strong> e <strong>Margarida Henriques</strong> representam a comunidade digital antes das redes sociais — Eduardo Santos como criador do fórum «O Mundo da Corrida», Margarida Henriques como figura associada à sua dinamização. Para o papel dos treinadores, ver 8.6.</p>
+
+<h3>8.6. Treinadores e a Evolução do Treino</h3>
+<p>O trail português foi, durante a primeira década, inteiramente autodidata. A figura que mais claramente representa a viragem para uma abordagem estruturada é <strong>Paulo Pires</strong> (FADEUP) — formado em alto rendimento, entrou no universo das ultradistâncias por convite de Carlos Sá, orientou a «Armada Portuguesa do Trail» (Carlos Sá, Armando Teixeira, Natércia Silvestre, Leonardo Diogo, entre outros) e em 2016 apresentou a plataforma <strong>beAPT</strong>, uma das primeiras tentativas portuguesas de sistematizar o coaching de trail em formato digital. <strong>Armando Teixeira</strong> (ver 8.2) representa o modelo complementar do atleta-treinador, tendo orientado o estágio da selecção nacional para o Mundial de Annecy 2015.</p>
+
+<div class="note"><strong>Lacuna assumida</strong>A história do treino de trail em Portugal está por documentar. Além de Paulo Pires (FADEUP), existem certamente outros treinadores relevantes — mas não foi possível fazê-los com rigor. Um levantamento sistemático está por fazer.</div>
+
+
+<h2 id="c9">9. Corpo, Mente, Nutrição e Equipamento</h2>
+
+<div class="note"><strong>Nota de cautela</strong>Este capítulo trata aspectos científicos da modalidade. Sou amador, não fisiologista nem nutricionista. As afirmações aqui apresentadas são gerais, baseadas em literatura de divulgação e em conhecimento de praticante. Para decisões de treino, alimentação ou saúde, o leitor deve recorrer a profissionais qualificados e à literatura científica peer-reviewed indicada nas referências [R29][R30][R31].</div>
+
+<h3>9.1. O Corpo</h3>
+<p>O trail running impõe ao organismo exigências fisiológicas diferentes das corridas de estrada. As mudanças constantes de ritmo e inclinação activam padrões musculares complexos. O quadricípite, os isquiotibiais e os peroneais sofrem cargas excêntricas intensas nas descidas. Em ultra trails acrescenta-se fadiga metabólica cumulativa, depleção de glicogénio, risco de hiponatremia (diluição perigosa do sódio no sangue por ingestão excessiva de água) e degradação cognitiva por privação de sono. Gerir estas variáveis é tão determinante como a capacidade física pura. [R29]</p>
+
+<p>Em Portugal há produção académica relevante: a tese de doutoramento da Universidade do Porto "The Portuguese Trail Runner" (perfil músculo-esquelético, fisiológico e neuromuscular) [R29] e o estudo de Matos et al. (2019, <em>Frontiers in Physiology</em>) sobre carga de treino, capacidade aeróbia e bem-estar em atletas dos campeonatos nacionais portugueses, conduzido no Politécnico de Viana do Castelo em colaboração com investigadores suíços [R38]. Estes trabalhos são porta de entrada para quem quiser aprofundar o tema com base científica.</p>
+
+
+<div class="ig-title">Principais riscos fisiológicos no ultra trail</div>
+<div class="ig-wrap">
+<svg viewBox="0 0 700 110" xmlns="http://www.w3.org/2000/svg" style="max-width:700px;width:100%">
+  <defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e87020" stop-opacity=".15"/><stop offset="100%" stop-color="#d45c00" stop-opacity=".05"/></linearGradient></defs>
+  <rect x="5"   y="5" width="130" height="100" rx="6" fill="url(#rg)" stroke="#f0d8c0" stroke-width="1"/>
+  <text x="70"  y="30" text-anchor="middle" font-family="Arial" font-size="20">💧</text>
+  <text x="70"  y="50" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">Hiponatremia</text>
+  <text x="70"  y="66" text-anchor="middle" font-family="Arial" font-size="9" fill="#777">↓ Sódio no sangue</text>
+  <text x="70"  y="80" text-anchor="middle" font-family="Arial" font-size="9" fill="#999">Beber demasiado</text>
+  <text x="70"  y="94" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">sem sais</text>
+  <rect x="145" y="5" width="130" height="100" rx="6" fill="url(#rg)" stroke="#f0d8c0" stroke-width="1"/>
+  <text x="210" y="30" text-anchor="middle" font-family="Arial" font-size="20">🧠</text>
+  <text x="210" y="50" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">Privação de Sono</text>
+  <text x="210" y="66" text-anchor="middle" font-family="Arial" font-size="9" fill="#777">Provas 24–48h</text>
+  <text x="210" y="80" text-anchor="middle" font-family="Arial" font-size="9" fill="#999">Degradação cognitiva</text>
+  <rect x="285" y="5" width="130" height="100" rx="6" fill="url(#rg)" stroke="#f0d8c0" stroke-width="1"/>
+  <text x="350" y="30" text-anchor="middle" font-family="Arial" font-size="20">🦵</text>
+  <text x="350" y="50" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">Dano Muscular</text>
+  <text x="350" y="66" text-anchor="middle" font-family="Arial" font-size="9" fill="#777">Esforço excêntrico</text>
+  <text x="350" y="80" text-anchor="middle" font-family="Arial" font-size="9" fill="#999">Descidas técnicas</text>
+  <rect x="425" y="5" width="130" height="100" rx="6" fill="url(#rg)" stroke="#f0d8c0" stroke-width="1"/>
+  <text x="490" y="30" text-anchor="middle" font-family="Arial" font-size="20">🌡</text>
+  <text x="490" y="50" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">Termorregulação</text>
+  <text x="490" y="66" text-anchor="middle" font-family="Arial" font-size="9" fill="#777">0°C → 40°C</text>
+  <text x="490" y="80" text-anchor="middle" font-family="Arial" font-size="9" fill="#999">Hipotermia / Calor</text>
+  <rect x="565" y="5" width="130" height="100" rx="6" fill="url(#rg)" stroke="#f0d8c0" stroke-width="1"/>
+  <text x="630" y="30" text-anchor="middle" font-family="Arial" font-size="20">⚡</text>
+  <text x="630" y="50" text-anchor="middle" font-family="Arial" font-size="11" font-weight="700" fill="#d45c00">Depleção Energética</text>
+  <text x="630" y="66" text-anchor="middle" font-family="Arial" font-size="9" fill="#777">Glicogénio esgotado</text>
+  <text x="630" y="80" text-anchor="middle" font-family="Arial" font-size="9" fill="#999">Hidratos por hora</text>
+</svg>
+</div>
+
+
+<h3>9.2. A Mente</h3>
+<p>A busca de contacto com a natureza é a motivação mais citada pelos trail runners, seguida do desafio pessoal, da melhoria da saúde e da escapatória ao stress. A expressão "completar é vencer" é reveladora: o trail tende a colocar o processo acima do resultado. As provas longas criam estados psicológicos descritos pelos próprios praticantes como "meditação em movimento" — descrições que pertencem ao registo da experiência subjectiva e que devem ser distinguidas de afirmações científicas estabelecidas, que requerem investigação peer-reviewed. <span class="unc">descrição experiencial, não validação clínica</span></p>
+<p>A psicologia do trail running com amostras portuguesas tem produção académica recente. Coelho et al. (2015) aplicaram a Sport Motivation Scale a 103 participantes de uma prova nacional, concluindo que a motivação intrínseca para a estimulação é o factor mais valorizado pelos praticantes [R40]. Gameiro et al. (2023, <em>Perceptual and Motor Skills</em>), do Politécnico de Leiria e do CIDESD, analisaram <em>mental toughness</em> e resiliência em 307 trail runners portugueses, mostrando associação significativa entre estas variáveis e a performance [R39].</p>
+<h3>9.3. Alimentação</h3>
+<p>A nutrição para trail evoluiu muito nos últimos quinze anos. Nos primeiros tempos, os atletas improvisavam com sopas, fruta e pão dos abastecimentos. Com o crescimento da modalidade, a nutrição tornou-se mais especializada — mas os números exactos (gramas de hidratos por hora, miligramas de sódio) variam por atleta, contexto e duração da prova, e devem ser planeados com profissionais. Um aspecto culturalmente rico das provas portuguesas: os abastecimentos com caldo verde quente a meio da noite, canja, batata com sal, queijos da Estrela. É uma embaixada improvisada da cultura alimentar das regiões atravessadas.</p>
+
+<h3>9.4. Equipamento</h3>
+<p>A história do equipamento de trail running é, em larga medida, a história do calçado. Marcas como Salomon, Hoka, Inov-8, La Sportiva e Merrell desenvolveram modelos progressivamente mais leves e específicos. O relógio GPS democratizou-se, passando de luxo profissional a equipamento standard. Plataformas como Strava, Garmin Connect e Wikiloc criaram um ecossistema de dados que transformou os padrões de treino: antes do GPS, treinava-se "a olho"; depois, com dados.</p>
+
+<h3>9.5. Profissionalização — uma transição inacabada</h3>
+<p>O trail português foi inteiramente construído por voluntários nos primeiros anos. Algumas provas atingiram entretanto escala que exigiu profissionalização: equipas técnicas, orçamentos consideráveis, estruturas de segurança com médicos e helicópteros. Carlos Sá foi o primeiro atleta português a conseguir patrocínio (Berg Outdoor) que lhe permitisse dedicar-se à modalidade a tempo inteiro. A integração do trail na FPA em 2023 foi um marco institucional não isento de tensões — parte da comunidade, que valorizava a informalidade e a independência, viu com reserva esta "atletização". Tratar a fundo essa transição exigiria entrevistas com posições críticas que este texto não fez. [R17]</p>
+
+<div class="note"><strong>Tema em aberto</strong>O modelo económico real do trail português — receitas das provas, custos de organização, dependência do voluntariado, peso dos patrocínios, viabilidade dos pequenos eventos, papel das plataformas comerciais como o UTMB World Series — está por estudar. Este texto não consegue oferecer mais do que uma vista sumária. É terreno fértil para um trabalho académico ou jornalístico próprio.</div>
+
+
+<h2 id="c14">10. Cultura, Território e Impacto Social</h2>
+<h3>10.1. Trail e Desenvolvimento Local</h3>
+<p>Uma das dimensões mais significativas do trail running em Portugal é o impacto no desenvolvimento dos territórios de baixa densidade. Provas em concelhos do interior — Marvão, Miranda do Corvo, Mondim de Basto, Vila Pouca de Aguiar, Terras de Bouro — atraem visitantes que noutras circunstâncias dificilmente lá chegariam. O impacto económico (dormidas, refeições, comércio local) é real, embora carente de quantificação rigorosa. Quando essa quantificação existir, valerá mais do que dezenas de declarações entusiásticas como esta. [R20][R21]</p>
+<h3>10.2. Trail e Sustentabilidade Ambiental</h3>
+<p>O crescimento massivo do trail colocou questões sérias sobre impacto ambiental. Julião, Valente e Mendes (CICS.NOVA/UNL, 2018), num dos poucos trabalhos académicos portugueses dedicados directamente à modalidade, analisaram a pressão das provas sobre áreas protegidas e a sua não-inclusão entre as actividades formalmente reconhecidas no turismo de natureza, alertando para os impactos cumulativos da concentração de participantes em zonas sensíveis [R21]. Outros estudos têm documentado, em zonas como Sintra, a Serra da Lousã ou a Serra d'Arga, erosão de trilhos, compactação do solo e perturbação da fauna. A resposta do sector tem sido a adopção progressiva de códigos de boas práticas: limitação de participantes, certificação de percursos, copo reutilizável obrigatório, proibição de lixo nos percursos, e iniciativas de compensação ambiental por parte de várias organizações. [R32]</p>
+<h3>10.3. Trail e Arqueologia</h3>
+<p>Portugal tem uma das mais ricas concentrações de património arqueológico da Península Ibérica e o trail nacional atravessa-o frequentemente: a Via Nova Romana (Geira), os arredores de Conímbriga, antas megalíticas do Alentejo, castros do noroeste, levadas da Madeira. O Trail de Conímbriga atravessa literalmente o maior sítio arqueológico romano de Portugal.</p>
+<h3>10.4. Inclusão</h3>
+<p>O trail português tem dimensão de inclusão crescente. A criação do AXtrail da Inclusão — primeira corrida de joelettes em Portugal — demonstrou que o modelo pode incorporar pessoas com mobilidade reduzida. Provas com distâncias curtas e caminhadas em paralelo permitem participação de pessoas de condições físicas variadas. Provas Kids para crianças e categorias veteranas para atletas acima dos 60 e 70 anos criam eventos onde avós e netos partilham a linha de chegada.</p>
+<h3>10.5. O lado menos confortável</h3>
+<p>Há uma narrativa habitual sobre o trail português como modalidade democrática, da qual eu próprio fui partícipe. Vale a pena resistir-lhe. Os estudos de perfil sociológico [R20][R21] indicam praticantes maioritariamente urbanos, de classe média e média-alta, com habilitações superiores acima da média nacional. As inscrições, o equipamento, as deslocações para provas no interior, as estadias e a alimentação somam custos que excluem muitos. A modalidade tem dimensões de abertura genuínas — voluntariado, cultura de inclusão dentro de cada prova, hospitalidade rural — mas afirmar a sua "democratização" sem contraponto é generosidade que a sociologia não confirma.</p>
+
+
+<h2 id="c15">11. Os Voluntários — Reconhecimento Sem Substituto para Pesquisa Própria</h2>
+<p class="lead">Nenhuma prova de trail acontece sem voluntários. Esta frase não é cortesia — é uma verdade estrutural.</p>
+<p>Um evento como o MIUT mobiliza centenas de pessoas que trabalham 24–48 horas seguidas: montam abastecimentos em lugares inacessíveis de madrugada, marcam e retiram quilómetros de trilho, servem comida quente, comunicam com equipas de resgate, confirmam dorsais, acompanham atletas em crise, limpam o percurso no dia seguinte. Alguns fazem-no há mais de uma década. Não aparecem nas classificações nem nos documentos históricos.</p>
+<h3>11.1. Quem São</h3>
+<p>A sociologia do voluntariado no trail é mais complexa do que parece. Há ex-atletas que, por lesão ou problema de saúde, deixaram de poder correr e encontraram aqui o seu lugar. Há familiares de atletas que acompanharam cônjuges ou filhos a provas durante anos e passaram a fazer parte activa do evento. Há pessoas que nunca correram um trail mas se identificam com os valores da comunidade.</p>
+<h3>11.2. O Voluntariado como Subsídio Invisível</h3>
+<p>Se as horas de todos os voluntários de uma prova de média dimensão fossem remuneradas ao salário mínimo, o custo de organização seria várias vezes superior ao actual <span class="unc">est, ordem de grandeza, sem estudo formal</span>. O voluntariado funciona como subsídio invisível à viabilidade do trail de pequena e média dimensão em Portugal — e por extensão, à acessibilidade da modalidade. À medida que o trail se profissionaliza e as provas crescem, a pressão sobre este modelo aumenta. Reconhecer esta tensão é o primeiro passo para a gerir. Quantificá-la com seriedade é trabalho ainda por fazer.</p>
+
+<div class="warn"><strong>⚠ Capítulo deficitário</strong><p>O capítulo dos voluntários é, na minha leitura, a maior dívida deste texto. Não fiz entrevistas formais, não recolhi testemunhos transcritos, não identifiquei voluntários com 10+ anos de participação ininterrupta. Reconhecer a sua centralidade sem fazer o trabalho de a documentar não chega. É lacuna que assumo, não problema que resolvo.</p></div>
+
+
+<h2 id="c16">12. Ecossistema Amador, Blogosfera e Memória Digital</h2>
+<p>O trail running português cresceu de baixo para cima. Antes das marcas, dos circuitos internacionais e das redes sociais, existiu um ecossistema amador que fez quase tudo: registou resultados, criou calendários, escreveu crónicas, fotografou provas, organizou treinos. Sem este ecossistema, o boom de 2012–2016 não teria tido a escala que atingiu.</p>
+<h3>12.1. Arquivos Históricos: João Lima e Carlos Fonseca</h3>
+<p><strong>João Lima</strong> criou e mantém o mais completo arquivo de resultados de provas portuguesas, com classificações desde 1910 até aos anos recentes. Para o trail, é fonte de memória preciosa. <strong>Carlos Fonseca</strong> mantém o portal de atletismo e trail mais referenciado pela comunidade, com sistema de categorização adoptado pela ATRP e o calendário que permitiu documentar o crescimento da modalidade. [R26][R14]</p>
+<h3>12.2. A Blogosfera</h3>
+<p>Os blogs foram a literatura espontânea do trail. <strong>dorsal1967</strong> (Luís Matos Ferreira, autor deste texto) cruzou trail, ultra endurance e reflexão. <strong>CorrerPorPrazer</strong> (Vítor Dias), fundado em 2008, tornou-se o site de corrida mais visitado de Portugal, com calendários e mais de 100 grupos de corrida listados. <strong>Corremais</strong> (Paulo Pires) registou os Treinos Lunares — corridas nocturnas em torno da lua cheia. <strong>RunPortugal</strong> (Eduardo Santos) sucedeu ao fórum "O Mundo da Corrida" como newsroom informal da modalidade.</p>
+<p>Esta blogosfera não foi só comentário. Foi pedagogia, memória e identidade: muitos atletas aprenderam a preparar a sua primeira prova longa lendo crónicas de pessoas que tinham sofrido antes deles.</p>
+<h3>12.3. Clubes e Grupos de Treino</h3>
+<p>Os clubes foram a infraestrutura social da modalidade. O <strong>Monsanto Running Team</strong>, fundado em 2011, tornou-se um dos maiores clubes de trail de Lisboa, com a icónica "Hora do Esquilo" — treinos diários antes de a família acordar. Os <strong>Porto Runners</strong> tiveram protagonismo no AXtrail. Os <strong>Amigos da Montanha</strong> de Barcelos, com ligação a Carlos Sá, organizaram em 2010 o inaugural Ultra Trail Amigos da Montanha. O <strong>Trail da Salamandra</strong> de Sintra foi espaço formativo de muitos atletas. O <strong>RUN 4 FUN</strong>, com núcleos em Lisboa e Almada, é exemplo dos clubes amadores que deram massa crítica e identidade social ao trail. [R33][R34]</p>
+<h3>12.4. Investigação Académica — o que existe, e o que não existe</h3>
+<p>Convém distinguir duas coisas que se tendem a confundir. O que <strong>não existe</strong> é historiografia académica do trail running em Portugal: nenhuma tese, monografia ou artigo de história do desporto que tome a modalidade como objecto principal e construa, com aparato crítico, a narrativa da sua evolução, dos seus protagonistas e das suas instituições. O que <strong>existe</strong> é um corpus crescente de investigação em ciências do desporto, geografia, turismo e educação física que utiliza o trail running português como amostra ou como caso de estudo para responder a outras perguntas.</p>
+<p>Esse corpus, a que recorri sempre que possível, inclui pelo menos sete linhas de trabalho:</p>
+<p><strong>Fisiologia, lesões e treino.</strong> A tese de doutoramento da FADEUP "The Portuguese Trail Runner" sobre lesões músculo-esqueléticas, perfil morfológico e neuromuscular [R29]. O estudo de Matos et al. (2019) sobre carga de treino e capacidade aeróbia em atletas dos campeonatos nacionais, publicado em <em>Frontiers in Physiology</em> [R38]. A dissertação de mestrado da FMH/Universidade de Lisboa sobre planeamento e metodologia de treino para o UTMB [R43].</p>
+<p><strong>Psicologia do desporto.</strong> Coelho et al. (2015) sobre motivação autodeterminada (Sport Motivation Scale) [R40]. Gameiro et al. (2023) sobre <em>mental toughness</em> e resiliência em 307 trail runners portugueses [R39].</p>
+<p><strong>Geografia, território, turismo.</strong> A dissertação da ESHT Estoril sobre potencial territorial e perfil dos praticantes [R20]. Os trabalhos de Julião, Valente e Mendes (CICS.NOVA/UNL, 2018) sobre espaços naturais e áreas protegidas [R21]. A dissertação de mestrado em SIG e Ordenamento do Território (UP) sobre fatores de risco e susceptibilidade a incêndios em provas de trail entre 2017 e 2020 [R41].</p>
+<p><strong>Análise comparada ibérica.</strong> Trabalho da NOVA com análise comparada de praticantes em contexto ibérico [R42] — uma das raras incursões académicas que cruzam Portugal com Espanha, e fonte privilegiada para colmatar a lacuna comparativa que assumi noutro lugar deste texto.</p>
+<p><strong>Educação física e desporto escolar.</strong> Pelo menos uma dissertação que estuda aptidão física em alunos que praticam trail vs. outras modalidades no Desporto Escolar [R44].</p>
+<p><strong>Saúde pública e prevalência.</strong> Pereira et al. (2021, <em>PLOS ONE</em>) sobre prevalência da corrida recreativa em Portugal — não específico ao trail, mas com base populacional sólida que enquadra a discussão [R30].</p>
+<p>Esta literatura é base útil para muitos capítulos deste documento, mas não dispensa o trabalho que ela própria não faz: documentar a história institucional, biográfica e social da modalidade. É essa a fronteira entre o que aqui se reúne e a história rigorosa que continua por escrever.</p>
+
+
+<h2 id="c18">13. Os Incêndios de 2017 e o Trail Running</h2>
+<p>Os incêndios florestais de Junho e Outubro de 2017 foram a maior catástrofe florestal da história portuguesa moderna, destruindo mais de 500.000 hectares e causando mais de 100 mortes. Para a comunidade do trail, representaram a destruição de territórios que eram simultaneamente cenários de prova, espaços de treino e paisagens de identidade. A Serra da Lousã, o Caramulo, a Serra da Freita, a Serra de Montemuro foram severamente atingidos. Trilhos do AXtrail/UTAX, Louzantrail e UTSF foram destruídos ou danificados.</p>
+<h3>13.1. Impacto Imediato</h3>
+<p>Vários eventos foram cancelados, alterados ou relocalizados. Percursos construídos ao longo de anos de trabalho desapareceram em horas. Os organizadores enfrentaram realidade para a qual nenhum regulamento os preparara: como dar continuidade a um evento quando o território que lhe dava sentido estava em cinzas.</p>
+<h3>13.2. Resposta da Comunidade</h3>
+<p>A resposta não foi apenas logística. Clubes e organizações mobilizaram-se para acções de reflorestação e limpeza: os Amigos da Montanha de Barcelos (projecto BiodiverCidade), organizadores do AXtrail e do Louzantrail (recuperação de trilhos), grupos de trail de todo o país (jornadas de voluntariado ambiental). Esta resposta revelou uma dimensão do trail que as classificações não captam: a consciência de que a modalidade depende da saúde dos territórios.</p>
+<h3>13.3. O Eucalipto e a Política Florestal</h3>
+<p>Os incêndios reabriram o debate sobre o modelo florestal português, marcado pela monocultura de eucalipto. A comunidade do trail, sem ter sido formada para essa discussão, foi nela apanhada — porque os trilhos atravessam essas plantações, e porque a sua destruição afecta directamente a modalidade. Não cabe a este texto resolver o tema, mas ignorá-lo seria dishonesto.</p>
+
+<div class="note"><strong>Capítulo deficitário</strong>O impacto documentado dos incêndios sobre as provas — quais foram canceladas, quantos quilómetros de percurso destruídos, como reagiram as organizações concretamente — está por sistematizar, embora exista um trabalho académico relevante: a dissertação de mestrado em SIG e Ordenamento do Território da UP que cartografou a susceptibilidade a incêndios das provas portuguesas entre 2017 e 2020 [R41]. As linhas acima são síntese impressionista. Um trabalho rigoroso teria de cruzar regulamentos, comunicados das organizações, listagens de provas dessas épocas e, idealmente, entrevistas com organizadores. Não foi feito.</div>
+
+
+<h2 id="c19">14. Cronologia</h2>
+<div class="tl">
+<div class="tl-item big"><div class="yr">1945</div><div class="ev">Fundação da Federação Portuguesa de Campismo (futura FCMP).</div></div>
+<div class="tl-item"><div class="yr">1991</div><div class="ev">FCMP incorpora o montanhismo.</div></div>
+<div class="tl-item big"><div class="yr">1998</div><div class="ev">1.ª edição do Campeonato Nacional de Corridas de Montanha (FPME). Vitorina Mourato e Vítor Cordeiro entre os primeiros vencedores.</div></div>
+<div class="tl-item"><div class="yr">1999</div><div class="ev">ACP organiza prova de 11 km na Serra de São Mamede com DNA de trail.</div></div>
+<div class="tl-item"><div class="yr">2002</div><div class="ev">Fundação autónoma da FPME.</div></div>
+<div class="tl-item"><div class="yr">2003</div><div class="ev">Criação do UTMB.</div></div>
+<div class="tl-item big"><div class="yr">2006</div><div class="ev">1.ª edição da Ultra Trail Serra da Freita (UTSF). Início do trail moderno em Portugal continental.</div></div>
+<div class="tl-item big"><div class="yr">2008</div><div class="ev">1.ª edição do MIUT (141 participantes). UTSM nasce no ACP.</div></div>
+<div class="tl-item"><div class="yr">2010</div><div class="ev">Carlos Sá vence o Grand Raid des Pyrénées. Plataforma Portugal Running.</div></div>
+<div class="tl-item big"><div class="yr">2012</div><div class="ev">Fundação da ATRP (Novembro). Cerca de 45 provas no calendário nacional.</div></div>
+<div class="tl-item big"><div class="yr">2013</div><div class="ev">Primeiro Circuito Nacional de Trail da ATRP, com um conjunto inicial de provas seleccionadas para estruturar a competição nacional. Carlos Sá vence Badwater. ATRP cresce para ~900 associados.</div></div>
+<div class="tl-item"><div class="yr">2014</div><div class="ev">ATRP aceite como associado extraordinário da FPA. ITRA já fundada (2013).</div></div>
+<div class="tl-item big"><div class="yr">2015</div><div class="ev">1.ª selecção nacional de trail (Annecy). MIUT entra no UTWT. World Athletics reconhece o trail.</div></div>
+<div class="tl-item big"><div class="yr">2016</div><div class="ev">Campeonato do Mundo no Gerês.</div></div>
+<div class="tl-item"><div class="yr">2017</div><div class="ev">Incêndios destroem trilhos no centro do país.</div></div>
+<div class="tl-item big"><div class="yr">2019</div><div class="ev">Campeonato do Mundo em Miranda do Corvo / Aldeias do Xisto. MIUT atinge 2.724 atletas, 52 países.</div></div>
+<div class="tl-item"><div class="yr">2020</div><div class="ev">ATRP ultrapassa ~11.000 associados (estimativa). Pandemia.</div></div>
+<div class="tl-item big"><div class="yr">2023</div><div class="ev">Integração plena do trail na FPA: filiação directa.</div></div>
+<div class="tl-item"><div class="yr">2024</div><div class="ev">FPA atinge 23.835 filiados (recorde).</div></div>
+<div class="tl-item"><div class="yr">2025</div><div class="ev">UTSM regressa.</div></div>
+</div>
+
+
+<h2 id="c20">15. Estatísticas-chave</h2>
+<h3>15.1. Arquivo João Lima — escala</h3>
+<div class="tbl-wrap">
+<table class="tbl">
+<thead><tr><th>Indicador</th><th>Valor</th><th>Nota</th></tr></thead>
+<tbody>
+<tr><td>Provas registadas (1910–2020)</td><td class="hi">2.783</td><td>Não exclusivo a trail</td></tr>
+<tr><td>Vencedores registados</td><td class="hi">12.741</td><td>Masculino e feminino</td></tr>
+<tr><td>Classificações em PDF</td><td class="hi">10.376</td><td>Arquivo histórico de resultados</td></tr>
+</tbody>
+</table>
+</div>
+<div class="ig-src">Fonte: João Lima · joaolima.net [R26]</div>
+
+<h3>15.2. MIUT — Crescimento Documentado</h3>
+<div class="tbl-wrap">
+<table class="tbl">
+<thead><tr><th>Ano</th><th>Participantes</th><th>Nota histórica</th></tr></thead>
+<tbody>
+<tr><td>2008</td><td>141</td><td>1.ª edição — Ponta do Pargo a Machico</td></tr>
+<tr><td>2009</td><td>82</td><td>2.ª edição — partida passa para Porto Moniz</td></tr>
+<tr><td>2010</td><td><em>Não realizado</em></td><td>Incêndios florestais na Madeira</td></tr>
+<tr><td>2011</td><td>128</td><td>Retoma após interrupção</td></tr>
+<tr><td>2012</td><td>303</td><td>Crescimento regional e nacional</td></tr>
+<tr><td>2013</td><td>449</td><td>Campeonato de Portugal de Ultra Trail</td></tr>
+<tr><td>2014</td><td>749</td><td>Consolidação</td></tr>
+<tr><td>2015</td><td class="hi">1.329</td><td>Entrada no UTWT; 36 países</td></tr>
+<tr><td>2016</td><td class="hi">2.041</td><td>Integrado no UTWT; 41 países</td></tr>
+<tr><td>2017</td><td class="hi">2.490</td><td>45 países</td></tr>
+<tr><td>2018</td><td>2.487</td><td>55 países</td></tr>
+<tr><td>2019</td><td class="hi">2.724</td><td>52 países — inscrições esgotam em 17 horas</td></tr>
+</tbody>
+</table>
+</div>
+<div class="ig-src">Fonte: Clube de Montanha do Funchal [R11]</div>
+<div class="note">Os valores de participantes são registos do arquivo da organização, não sujeitos a auditoria externa. Constituem fonte primária (Zona 2) — os dados provêm do próprio organizador. Divergências pontuais com outras fontes são possíveis.</div>
+
+<h3>15.3. Linha Interpretativa do Crescimento</h3>
+<div class="tbl-wrap">
+<table class="tbl">
+<thead><tr><th>Período</th><th>Caracterização</th><th>Marcos</th></tr></thead>
+<tbody>
+<tr><td><strong>1998–2005</strong></td><td>Base inicial</td><td>Campeonatos FPME, corridas de montanha, provas pioneiras</td></tr>
+<tr><td><strong>2006–2008</strong></td><td>Introdução do trail moderno</td><td>UTSF, MIUT, Geira, primeiros ultra trails</td></tr>
+<tr><td><strong>2009–2012</strong></td><td>Crescimento acelerado</td><td>Carlos Sá internacional, blogs, fóruns, fundação da ATRP</td></tr>
+<tr><td><strong>2013–2015</strong></td><td>Estruturação competitiva</td><td>Circuitos ATRP, MIUT no UTWT, 1.ª selecção nacional</td></tr>
+<tr><td><strong>2016–2019</strong></td><td>Internacionalização</td><td>Dois Mundiais em Portugal</td></tr>
+<tr><td><strong>2020–2026</strong></td><td>Maturidade e regulação</td><td>Pandemia, integração federativa, novos formatos, sustentabilidade</td></tr>
+</tbody>
+</table>
+</div>
+
+
+<h2 id="c21">16. Lacunas Reconhecidas e Caminho para uma História Mais Sólida</h2>
+<p>Este texto é um ponto de partida. Reúno em baixo os capítulos que assumo como deficitários e o tipo de trabalho que cada um exigiria para sair desse estado.</p>
+
+<div class="tbl-wrap">
+<table class="tbl">
+<thead><tr><th>Lacuna</th><th>Estado actual</th><th>Trabalho que falta</th></tr></thead>
+<tbody>
+<tr><td><strong>Mulheres no trail</strong></td><td>Lista de nomes, dois parágrafos</td><td>Entrevistas formais a fundadoras, organizadoras, atletas; cruzamento com arquivos; capítulo próprio</td></tr>
+<tr><td><strong>Voluntários</strong></td><td>Reconhecimento retórico</td><td>Identificar voluntários com 10+ anos de actividade; testemunhos transcritos; quantificação económica</td></tr>
+<tr><td><strong>Conflitos ATRP/FPA/FPME</strong></td><td>Síntese diplomática</td><td>Trabalho de outsider — o autor é parte interessada</td></tr>
+<tr><td><strong>Incêndios de 2017</strong></td><td>Síntese impressionista</td><td>Inventário das provas afectadas; entrevistas com organizadores</td></tr>
+<tr><td><strong>Comparação ibérica/europeia</strong></td><td>Praticamente ausente neste texto, embora exista trabalho académico NOVA <a href="#ref-r42" style="color:var(--o1)">[R42]</a></td><td>Mobilizar o trabalho da NOVA; estudo comparativo mais alargado com Espanha (FEDME, Salomon Spain Series), França e Itália</td></tr>
+<tr><td><strong>Açores</strong></td><td>Quase ausentes</td><td>Capítulo próprio sobre o trail açoriano</td></tr>
+<tr><td><strong>Aspectos comerciais e económicos</strong></td><td>Síntese sumária</td><td>Estudo de receitas/custos; modelo UTMB World Series; patrocínios</td></tr>
+<tr><td><strong>Profissionalização real dos atletas</strong></td><td>Anedótico</td><td>Quantos vivem da modalidade; estrutura de patrocínios</td></tr>
+<tr><td><strong>Doping e segurança</strong></td><td>Ausente</td><td>Casos, regulamentos, fiscalização</td></tr>
+<tr><td><strong>Plataformas de inscrição</strong></td><td>Ausente</td><td>Acorrer, Lap2Go, All4Running, Stop&amp;Go — fundadores e modelos</td></tr>
+<tr><td><strong>Fotografia e cultura visual</strong></td><td>Ausente</td><td>A estética que construiu a identidade visual da modalidade</td></tr>
+<tr><td><strong>Trail e classes sociais</strong></td><td>Tocado, não desenvolvido</td><td>Análise sociológica do perfil real dos praticantes</td></tr>
+<tr><td><strong>Trail e alterações climáticas</strong></td><td>Mencionado</td><td>Impacto nos trilhos, adaptação dos calendários</td></tr>
+<tr><td><strong>Treino e treinadores</strong></td><td>Esboço (8.6)</td><td>Levantamento sistemático dos treinadores portugueses de trail; formações, metodologias, atletas orientados; evolução do coaching online em Portugal</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>16.1. Tendências em Curso (2026)</h3>
+<p>O trail running em Portugal em 2026 é uma modalidade madura, com estrutura organizativa sólida e base de praticantes alargada. As tendências em curso incluem maior integração tecnológica (análise de dados de treino com IA, navegação digital em trilhos), aprofundamento das preocupações de sustentabilidade e o crescimento sustentado da participação feminina. Os desafios incluem a gestão do impacto ambiental em áreas protegidas, o equilíbrio entre democratização e preservação do espírito de aventura, a prevenção de riscos em provas longas, e a sustentabilidade financeira de um sector com muitas provas de pequena dimensão e base voluntária. A questão climática é crescente: com Verões cada vez mais quentes, provas de Junho a Setembro enfrentam riscos de temperatura extrema.</p>
+
+
+<h2 id="c22">17. Nota Final</h2>
+<p>A história do trail running em Portugal é uma história de comunidade. Começou nos anos 1990 com as corridas em montanha organizadas pela FPME, tomou forma própria com as primeiras ultra trails no início dos anos 2000, cresceu rapidamente entre 2010 e 2016, e consolidou-se ao longo da última década numa das modalidades desportivas mais visíveis do país. Atravessa serras, levadas, trilhos romanos e aldeias de xisto. Mobiliza atletas, organizadores, voluntários, famílias, comunidades locais.</p>
+<p>Este documento, repito-o aqui no fim para não haver dúvida, é uma síntese amadora. Está enviesado pela perspectiva de quem o escreve. Tem capítulos onde cumpre razoavelmente a tarefa de informar e capítulos onde só consegue identificar o trabalho que outros terão de fazer. As suas omissões são tantas como as suas afirmações.</p>
+<p>Espero que sirva de ponto de partida — para quem quiser conhecer a modalidade, e sobretudo para quem decidir, com mais tempo, mais distância e mais método, escrever a história que isto não é.</p>
+
+
+<div class="refs" id="refs">
+<h3>Nota sobre as fontes</h3>
+<p style="font-family:Arial,sans-serif;font-size:13px;color:#555;line-height:1.6;margin:0 0 16px">
+Esta bibliografia foi renumerada consecutivamente em relação a versões anteriores. Está organizada em cinco categorias e mantém apenas as fontes que à data de redacção estavam acessíveis ou que, por serem fundamentais e estarem temporariamente indisponíveis, são marcadas como tal. Na presente actualização, a categoria académica foi expandida com sete novas referências (R38–R44) identificadas em pesquisa específica: trabalhos publicados em revistas indexadas (<em>Frontiers in Physiology</em>, <em>Perceptual and Motor Skills</em>, <em>PLOS ONE</em>), teses portuguesas (FADEUP, FMH/UL, ESHT Estoril, UP-SIG) e investigação aplicada (Politécnico de Leiria, IPVC, CICS.NOVA). Importa sublinhar que esta literatura usa o trail running português como amostra para responder a perguntas de fisiologia, psicologia, geografia ou turismo — não constitui historiografia da modalidade, que continua por escrever. Reconheço três limites mantidos: (1) a bibliografia académica internacional sobre trail/ultra continua sub-representada; (2) há pouca literatura em livro citada; (3) muitas fontes são da própria comunidade (sítios de provas, arquivos digitais), o que é coerente com o estatuto amador deste texto mas significa também que a triangulação independente é, em vários pontos, insuficiente.
+</p>
+
+<h3>I. Internacionais e Globais</h3>
+<div class="ref"><b>[R1]</b> ITRA — International Trail Running Association. <a href="https://itra.run" target="_blank">itra.run</a></div>
+<div class="ref"><b>[R2]</b> UTMB World Series. <a href="https://utmb.world" target="_blank">utmb.world</a></div>
+
+<h3>II. Fontes Institucionais Portuguesas</h3>
+<div class="ref"><b>[R3]</b> FCMP — Federação de Campismo e Montanhismo de Portugal. <a href="https://fcmportugal.com/a-fcmp/" target="_blank">fcmportugal.com</a></div>
+<div class="ref"><b>[R4]</b> FPME — História da formação. <a href="https://fpme.org/webpu/index.php/11-direcao/141-historia-da-formacao-da-fpme" target="_blank">fpme.org</a></div>
+<div class="ref"><b>[R5]</b> FPME — Corrida em Montanha. <a href="https://www.fpme.org/webpu/index.php/10-corrida-em-montanha" target="_blank">fpme.org</a></div>
+<div class="ref"><b>[R6]</b> ACP / UTSM — História. <a href="https://utsm.pt/historia-2/" target="_blank">utsm.pt/historia-2/</a></div>
+
+<h3>III. Fontes de Provas</h3>
+<div class="ref"><b>[R7]</b> RTP — «Carlos Sá vence ultramaratona de Badwater Basin» (Jul 2013). <a href="https://www.rtp.pt/noticias/atletismo/carlos-sa-vence-ultramaratona-de-badwater-basin-a-mais-dura-corrida-do-mundo_d667059" target="_blank">rtp.pt</a></div>
+<div class="ref"><b>[R8]</b> Site oficial de Carlos Sá. <a href="https://www.carlossa.com/biografia" target="_blank">carlossa.com/biografia</a> <em style="color:#aaa">[à data inacessível — timeout; manter como referência primária a substituir em v3]</em></div>
+<div class="ref"><b>[R9]</b> CorrerPorPrazer — entrevista a Carlos Sá. <a href="https://correrporprazer.com/" target="_blank">correrporprazer.com</a></div>
+<div class="ref"><b>[R10]</b> Município de Terras de Bouro — Via XVIII / Geira Romana. <a href="https://turismo.cm-terrasdebouro.pt/listings/via-xviii-geira/" target="_blank">turismo.cm-terrasdebouro.pt</a></div>
+<div class="ref"><b>[R11]</b> Clube de Montanha do Funchal — MIUT História. <a href="https://clubedemontanha.com/miut/" target="_blank">clubedemontanha.com/miut/</a></div>
+<div class="ref"><b>[R12]</b> MIUT — Sítio oficial. <a href="https://miutmadeira.com/" target="_blank">miutmadeira.com</a></div>
+<div class="ref"><b>[R13]</b> Portugal Running — Sobre. <a href="https://www.portugalrunning.com/about/" target="_blank">portugalrunning.com</a></div>
+
+<h3>IV. Comunidade, Arquivos e Blogosfera</h3>
+<div class="ref"><b>[R14]</b> Carlos Fonseca — Portal de atletismo e trail. <a href="https://www.atletismo.carlos-fonseca.com/trail.htm" target="_blank">atletismo.carlos-fonseca.com</a></div>
+<div class="ref"><b>[R15]</b> ATRP — Página institucional. <a href="https://atrp.pt/sobre-a-atrp/" target="_blank">atrp.pt/sobre-a-atrp/</a></div>
+<div class="ref"><b>[R16]</b> PÚBLICO — «Trail running: a natureza como aliada e como obstáculo» (Maio 2014). <a href="https://www.publico.pt/2014/05/29/desporto/noticia/trail-running-a-natureza-como-aliada-e-como-obstaculo-1637809" target="_blank">publico.pt</a></div>
+<div class="ref"><b>[R17]</b> ATRP — FAQs sobre relação ATRP/FPA. <a href="https://asasetubal.pt/posts/read/479" target="_blank">asasetubal.pt</a></div>
+<div class="ref"><b>[R18]</b> CorrerPorPrazer — «Portugal com oito atletas no mundial de Trail» (Maio 2015). <a href="https://correrporprazer.com/2015/05/portugal-com-oito-atletas-no-campeonato-do-mundo-de-trail-running/" target="_blank">correrporprazer.com</a></div>
+<div class="ref"><b>[R19]</b> dorsal1967 — «Estágio da Selecção Nacional» (Maio 2015). <a href="https://dorsal1967.blogspot.com/2015/05/estagio-da-selecao-nacional-de-trail.html" target="_blank">dorsal1967.blogspot.com</a> <em style="color:#aaa">[blog do autor deste texto — citado em transparência]</em></div>
+<div class="ref"><b>[R24]</b> ACP — «UTSM regressa em 2025» (Nov 2023). <a href="https://acportalegre.com/2023/11/03/utsm-regressa-em-2025/" target="_blank">acportalegre.com</a></div>
+<div class="ref"><b>[R25]</b> Aldeias do Xisto — UTAX. <a href="https://www.aldeiasdoxisto.pt/pt/xistopedia/utax-ultra-trail-das-aldeias-do-xisto/" target="_blank">aldeiasdoxisto.pt</a></div>
+<div class="ref"><b>[R26]</b> João Lima — Arquivo de provas. <a href="https://www.joaolima.net/Provas.htm" target="_blank">joaolima.net/Provas.htm</a></div>
+<div class="ref"><b>[R27]</b> Carlos Sá — Wikipédia PT. <a href="https://pt.wikipedia.org/wiki/Carlos_S%C3%A1" target="_blank">wikipedia.org</a></div>
+<div class="ref"><b>[R28]</b> AdventureCORPS — Carlos Sá, historical Badwater results. <a href="https://dbase.adventurecorps.com/individualHistory.php?p=2339" target="_blank">dbase.adventurecorps.com</a></div>
+<div class="ref"><b>[R33]</b> CorrerPorPrazer — RUN 4 FUN. <a href="https://correrporprazer.com/grupo-de-corrida/run-4-fun-nucleo-almada/" target="_blank">correrporprazer.com</a></div>
+<div class="ref"><b>[R34]</b> RUN 4 FUN — Blogue oficial. <a href="https://run4f.blogspot.com/" target="_blank">run4f.blogspot.com</a></div>
+<div class="ref"><b>[R35]</b> Rui Costa Tri — «Trilho do Almourol - 07Abril13» (Abr 2013), anunciado como prova do Circuito Nacional de Trail Running ATRP. <a href="https://ruicostatri.webnode.pt/news/trilho-do-almourol-07abril13/" target="_blank">ruicostatri.webnode.pt</a></div>
+<div class="ref"><b>[R36]</b> Casa do Benfica em Abrantes — publicação de Julho 2013 sobre o Trail do Almonda, descrito como uma das 8 provas escolhidas pela ATRP para o circuito nacional. <a href="https://casabenficaabrantes38.blogspot.com/2013/07/" target="_blank">casabenficaabrantes38.blogspot.com</a></div>
+<div class="ref"><b>[R37]</b> ON Centro — nota que resume o Circuito Nacional de Trail organizado pela ATRP como estrutura que elege campeões nacionais desde 2013. <a href="https://on-centro.pt/index.php/pt/news/item/2552-meio-milhar-de-atletas-corre-o-proenca-cross-trail-este-sabado" target="_blank">on-centro.pt</a></div>
+
+<h3>V. Fontes Académicas</h3>
+<div class="ref"><b>[R20]</b> Dissertação ESHT Estoril (RCAAP). «Trail Running: Modelo e Potencial Territorial». <a href="https://comum.rcaap.pt/server/api/core/bitstreams/2e758a4b-c3d3-499c-883f-9aa1a79ad90e/content" target="_blank">rcaap.pt</a> <em style="color:#aaa">[PDF]</em></div>
+<div class="ref"><b>[R21]</b> Julião, Valente, Mendes (2018). «Espaços Naturais e Trail Running em Portugal». 9th IUCN/MMV. <a href="https://run.unl.pt/bitstream/10362/73098/1/Congresso_Iberico_3_Espacos_Naturais.pdf" target="_blank">run.unl.pt</a> <em style="color:#aaa">[PDF]</em></div>
+<div class="ref"><b>[R22]</b> AA Braga — Filiação Trail 2023/2024. <a href="https://www.aabraga.pt/pt/noticias/filiacao-de-praticantes-de-trail-running" target="_blank">aabraga.pt</a></div>
+<div class="ref"><b>[R23]</b> FPA — Relatório de Actividade e Contas 2024. <a href="https://fpaportalonline.blob.core.windows.net/portalfpa-public/2025/04/RAC_2024_VF.pdf" target="_blank">fpaportalonline.blob.core.windows.net</a> <em style="color:#aaa">[PDF]</em></div>
+<div class="ref"><b>[R29]</b> «The Portuguese Trail Runner» — tese doutoramento UP. <a href="https://repositorio-aberto.up.pt/bitstream/10216/128013/2/410406.pdf" target="_blank">repositorio-aberto.up.pt</a> <em style="color:#aaa">[PDF]</em></div>
+<div class="ref"><b>[R30]</b> Pereira et al. (2021). «Running prevalence in Portugal». PLOS ONE. <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0245242" target="_blank">plosone.org</a></div>
+<div class="ref"><b>[R31]</b> Hoffman, M. D. (vários trabalhos sobre fisiologia do ultra-endurance) — referência genérica como ponto de entrada na literatura internacional. <em style="color:#aaa">[a aprofundar em v3]</em></div>
+<div class="ref"><b>[R32]</b> ICNF — Códigos de Conduta de visitantes em Áreas Protegidas. <a href="https://www.icnf.pt/turismodenatureza/codigosdeconduta" target="_blank">icnf.pt/turismodenatureza/codigosdeconduta</a></div>
+<div class="ref"><b>[R38]</b> Matos, S., Clemente, F. M., Brandão, A., Pereira, J., Rosemann, T., Nikolaidis, P. T., &amp; Knechtle, B. (2019). «Training Load, Aerobic Capacity and Their Relationship With Wellness Status in Recreational Trail Runners». <em>Frontiers in Physiology</em>, 10:1189. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6755333/" target="_blank">ncbi.nlm.nih.gov/pmc/articles/PMC6755333</a> · DOI: 10.3389/fphys.2019.01189. <em style="color:#aaa">Amostra: 47 atletas masculinos do campeonato nacional português, IPVC/Melgaço.</em></div>
+<div class="ref"><b>[R39]</b> Gameiro, N., Rodrigues, F., Antunes, R., Matos, R., Amaro, N., Jacinto, M., &amp; Monteiro, D. (2023). «Mental Toughness and Resilience in Trail Runner's Performance». <em>Perceptual and Motor Skills</em>, 130(3). <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10233502/" target="_blank">ncbi.nlm.nih.gov/pmc/articles/PMC10233502</a> · DOI: 10.1177/00315125231165819. <em style="color:#aaa">Amostra: 307 trail runners portugueses, Politécnico de Leiria/CIDESD.</em></div>
+<div class="ref"><b>[R40]</b> Coelho, E., Amaro, N., Matos, R., Dias, R., &amp; Morouço, P. (2015). «A motivação autodeterminada para a prática do trail running». ResearchGate publication 299851735. <a href="https://www.researchgate.net/publication/299851735" target="_blank">researchgate.net</a> <em style="color:#aaa">Amostra: 103 participantes de uma prova nacional, aplicação da Sport Motivation Scale.</em></div>
+<div class="ref"><b>[R41]</b> Dissertação de mestrado em Sistemas de Informação Geográfica e Ordenamento do Território (Universidade do Porto, 2021). «Trail Running e susceptibilidade a incêndios — Portugal continental 2017–2020». <a href="https://repositorio-aberto.up.pt/bitstream/10216/135043/2/484281.pdf" target="_blank">repositorio-aberto.up.pt</a> <em style="color:#aaa">[PDF]</em></div>
+<div class="ref"><b>[R42]</b> «Análise comparada dos praticantes de Trail Running em contexto Ibérico». RUN — Repositório UNL, handle 10362/65950. <a href="https://run.unl.pt/handle/10362/65950" target="_blank">run.unl.pt/handle/10362/65950</a> <em style="color:#aaa">Trabalho académico de comparação Portugal/Espanha — fonte central para o capítulo comparativo que falta neste texto.</em></div>
+<div class="ref"><b>[R43]</b> Dissertação de mestrado FMH/Universidade de Lisboa (2018). «Caracterização, planeamento e metodologia de treino numa ultramaratona de montanha» — estudo de caso na preparação para o UTMB. <a href="https://repositorio.ulisboa.pt/entities/publication/c5f108cd-3f38-4041-9c3f-3e5728d13a43" target="_blank">repositorio.ulisboa.pt</a></div>
+<div class="ref"><b>[R44]</b> Dissertação «Trail running como modalidade desportiva do desporto escolar» (RCAAP, 2023). <a href="https://comum.rcaap.pt/entities/publication/1589c680-5a2a-4fce-b95e-febc7d7d661b" target="_blank">comum.rcaap.pt</a> <em style="color:#aaa">Amostra: 119 alunos do 5.º ao 9.º ano, comparação de aptidão física entre praticantes de trail e outras modalidades no Desporto Escolar.</em></div>
+
+<h3>Fontes citadas mas com problemas de acesso</h3>
+<p style="font-family:Arial,sans-serif;font-size:12.5px;color:#777;line-height:1.6;margin:8px 0">
+À data de redacção desta v2, as seguintes fontes estavam total ou parcialmente inacessíveis: <em>confrariatrotamontes.com</em> (servidor com erro), <em>desnivel.pt</em> (link indisponível), <em>Sapienta Sports</em> (domínio sequestrado). As afirmações que delas dependiam estão sinalizadas no texto como estimativas ou memória comunitária, à espera de confirmação contra fontes alternativas em versões futuras.
+</p>
+</div>
+
+
+<div class="footer">
+  <p style="margin:0 0 16px 0;color:#888">
+    Publicado em 2026 · v2 · Síntese pessoal sobre a evolução do trail running em Portugal · Não pretende ser estudo histórico-científico.
+  </p>
+  
+  <div style="background:#fff;border:1px solid #e0ddd5;border-left:5px solid #2c3e50;border-radius:8px;color:#555;font-size:13.5px;line-height:1.75;margin:24px 0;padding:18px 22px">
+    <strong style="color:#2c3e50">Sobre método e ferramentas</strong><br><br>
+    A pesquisa, organização estrutural, redacção e revisão deste artigo foram feitas com recurso a modelos de inteligência artificial (Claude, da Anthropic, e ChatGPT, da OpenAI), num modelo supervisionado: a orientação histórica, selecção dos temas, validação das fontes e decisões editoriais foram humanas; os modelos foram usados como ferramentas de apoio à pesquisa, síntese e revisão de escrita. As afirmações factuais relevantes foram revistas criticamente; as referências foram verificadas contra fontes externas sempre que possível. Esta v2 incorpora crítica externa que apontou problemas de fontes, conflito de interesses, auto-citação e tom da v1, e procura responder a essa crítica.
+  </div>
+
+  <div style="background:#fff;border:1px solid #f1e3d1;border-left:5px solid #b45309;border-radius:8px;color:#555;font-size:13.5px;line-height:1.75;margin:24px 0;padding:18px 22px">
+    <strong style="color:#b45309;display:block;margin-bottom:8px">Convite ao Contraditório e a Contributos</strong>
+    Este artigo-base tem lacunas conhecidas, capítulos assumidamente deficitários e zonas em que a proximidade do autor ao ecossistema da modalidade limita a distância analítica. Em particular:
+    <ul style="margin:8px 0 0 18px;padding:0">
+      <li>Testemunhos e fontes sobre as <strong>mulheres no trail português</strong>, em especial fundadoras, organizadoras e atletas da primeira geração</li>
+      <li>Informação documentada sobre <strong>voluntários</strong>, equipas invisíveis e formas de trabalho não remunerado que sustentaram provas durante anos</li>
+      <li>Correcções factuais e fontes adicionais sobre os <strong>conflitos institucionais</strong> entre ATRP, FPA, FPME e outras estruturas</li>
+      <li>Elementos verificáveis sobre o impacto dos <strong>incêndios de 2017</strong> no calendário, nos trilhos e nas comunidades locais</li>
+      <li>Bibliografia, dados ou estudos comparativos sobre <strong>Portugal, Espanha e Europa</strong> que ajudem a sair de uma leitura excessivamente interna</li>
+      <li>Contributos sobre <strong>Açores, treino, treinadores, plataformas de inscrição, fotografia e economia da modalidade</strong>, temas aqui apenas esboçados ou omitidos</li>
+      <li>Correcções a qualquer facto aqui afirmado, desde que apoiadas em <strong>fonte verificável</strong></li>
+    </ul>
+    <br>Contributos documentados podem ser enviados por <a href="https://dorsal1967.blogspot.com" style="color:#b45309">comentário no artigo-base no blog</a> ou por email (contacto no blog). Correcções substantivas podem ser incorporadas em futuras versões, com crédito e em modo de erratum quando tal se justificar.
+  </div>
+
+  <div style="background:#f8f8f8;border:1px solid #e0ddd5;border-radius:8px;color:#333;font-size:14px;line-height:1.7;margin:24px 0 0 0;padding:16px 22px">
+    <strong>Autor:</strong> Luis Matos Ferreira<br>
+    <span style="color:#555;">Cofundador da ATRP, trail runner desde 2010, finisher de nove provas de 100 milhas. Escreve a partir de uma experiência directa da modalidade — como atleta, organizador e parte interessada — e não como historiador independente.</span>
+  </div>
+</div>
+
+</div><!-- /body -->
+</div><!-- /p -->
+
+
+<script>
+(function(){
+  var root=document.querySelector('.p');
+  var refs=document.getElementById('refs');
+  if(!root||!refs)return;
+  var citeCounter=0;
+
+  function ensureCiteId(link){
+    if(!link.id){
+      citeCounter+=1;
+      link.id='cite-back-'+citeCounter;
+    }
+    return link.id;
+  }
+
+  refs.querySelectorAll('.ref b').forEach(function(b){
+    var m=b.textContent.match(/\[R(\d+)\]/);
+    if(m&&!b.id)b.id='ref-r'+m[1];
+  });
+
+  refs.querySelectorAll('.ref').forEach(function(row){
+    var b=row.querySelector('b');
+    if(!b||row.querySelector('.ref-back'))return;
+    var m=b.textContent.match(/\[R(\d+)\]/);
+    if(!m)return;
+    var rid=m[1];
+    var back=document.createElement('span');
+    back.className='ref-back';
+    back.innerHTML=' · <a href="#" data-rid="'+rid+'" title="Voltar ao ponto de leitura">↩ voltar ao texto</a>';
+    row.appendChild(back);
+  });
+
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{
+    acceptNode:function(node){
+      if(!/\[R\d+\]/.test(node.nodeValue))return NodeFilter.FILTER_REJECT;
+      var parent=node.parentElement;
+      if(!parent)return NodeFilter.FILTER_REJECT;
+      if(parent.closest('#refs,script,style,svg,a'))return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+
+  var targets=[],current;
+  while((current=walker.nextNode()))targets.push(current);
+
+  targets.forEach(function(textNode){
+    var linked=textNode.nodeValue.replace(/\[R(\d+)\]/g,function(_,id){
+      return '<a class="cite-ref" href="#ref-r'+id+'" data-rid="'+id+'">[R'+id+']</a>';
+    });
+    if(linked===textNode.nodeValue)return;
+    var wrapper=document.createElement('span');
+    wrapper.innerHTML=linked;
+    textNode.parentNode.replaceChild(wrapper,textNode);
+  });
+
+  root.addEventListener('click',function(e){
+    var cite=e.target.closest('a.cite-ref');
+    if(!cite||!root.contains(cite))return;
+    var id=ensureCiteId(cite);
+    try{sessionStorage.setItem('trail-last-cite-id',id);}catch(_){ }
+  });
+
+  refs.addEventListener('click',function(e){
+    var back=e.target.closest('.ref-back a');
+    if(!back)return;
+    e.preventDefault();
+
+    var targetId='';
+    try{targetId=sessionStorage.getItem('trail-last-cite-id')||'';}catch(_){ }
+
+    if(targetId){
+      var target=document.getElementById(targetId);
+      if(target){
+        location.hash=targetId;
+        return;
+      }
+    }
+
+    var rid=back.getAttribute('data-rid');
+    var fallback=root.querySelector('a.cite-ref[data-rid="'+rid+'"]');
+    if(fallback){
+      location.hash=ensureCiteId(fallback);
+      return;
+    }
+
+    history.back();
+  });
+})();
+</script>
